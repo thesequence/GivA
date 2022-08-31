@@ -9,7 +9,11 @@ require "open-uri"
 
 require "faker"
 
+puts "deleting database"
+
 User.delete_all
+
+puts "seeding database"
 
 # generate 10 female users
 (1..10).each do |id|
@@ -36,7 +40,7 @@ User.delete_all
 
   user = User.new(
 
-    # each user is assigned an id from 1-20
+    # each user is assigned an id from 1-10
 
       name: Faker::Name.female_first_name,
       email: "test#{id}@giva.com",
@@ -56,10 +60,11 @@ User.delete_all
       # bio: Faker::Lorem.paragraph(sentence_count: 6),
       bio: bio_array[id - 1]
 )
-user.photo.attach(io: female_pics[id - 1], filename: "fpic#{id}.jpg", content_type: "image/jpg")
+user.photo.attach(io: URI.open(female_pics[id - 1]), filename: "fpic#{id}.jpg", content_type: "image/jpg")
 user.save
 end
 
+puts "created #{User.count}female users"
 # generate 10 male users
 
 (11..20).each do |id|
@@ -84,11 +89,9 @@ end
                "https://res.cloudinary.com/dbgvo56a1/image/upload/v1661951109/males/54_przlxu.jpg",
                "https://res.cloudinary.com/dbgvo56a1/image/upload/v1661951109/males/46_fnhty3.jpg"]
 
-  User.create!(
+  user = User.new(
 
     # each user is assigned an id from 10-20
-
-      id: id,
 
       name: Faker::Name.male_first_name,
       email: "test#{id}@giva.com",
@@ -108,9 +111,11 @@ end
       # bio: Faker::Lorem.paragraph(sentence_count: 6),
       bio: bio_array[id - 11]
 )
-user.photo.attach(io: male_pics[id - 11], filename: "mpic#{id}.jpg", content_type: "image/jpg")
+user.photo.attach(io: URI.open(male_pics[id - 11]), filename: "mpic#{id}.jpg", content_type: "image/jpg")
 user.save
 end
+
+puts "created #{User.count} male users"
 
 User.all.map do |user|
 
@@ -134,6 +139,8 @@ User.all.map do |user|
   end
 end
 
+puts "created displaced people"
+puts "seeding complete"
 # User.create!(
 #   email: "nhumo@test.com",
 #   password: "123456789"

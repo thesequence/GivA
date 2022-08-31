@@ -23,13 +23,20 @@ User.delete_all
               "I am a political refugee from the ME. social activist. hope to make this world better. i worked in theater and media and would like to continue this route",
               "I moved here 2 months ago when the war started. I am a parent of 3. we love trips in the woods and playing with our dog. I worked as a cook and had my own restaurant.",
               "Political refugee from Eastern Europe. just arrived here and need accomodation. I am a student of philosophy, about to major. worked in libraries and at university as TA."]
+  female_pics = ["https://res.cloudinary.com/dbgvo56a1/image/upload/v1661951077/females/90_myxkbl.jpg",
+                 "https://res.cloudinary.com/dbgvo56a1/image/upload/v1661951077/females/6_cymxbh.jpg",
+                 "https://res.cloudinary.com/dbgvo56a1/image/upload/v1661951077/females/88_u0pbhh.jpg",
+                 "https://res.cloudinary.com/dbgvo56a1/image/upload/v1661951077/females/94_iyoynq.jpg",
+                 "https://res.cloudinary.com/dbgvo56a1/image/upload/v1661951077/females/62_llpb8x.jpg",
+                 "https://res.cloudinary.com/dbgvo56a1/image/upload/v1661951077/females/48_dbpiid.jpg",
+                 "https://res.cloudinary.com/dbgvo56a1/image/upload/v1661951077/females/22_vqynva.jpg",
+                 "https://res.cloudinary.com/dbgvo56a1/image/upload/v1661951077/females/2_gxh81f.jpg",
+                 "https://res.cloudinary.com/dbgvo56a1/image/upload/v1661951077/females/67_e3xhzc.jpg",
+                 "https://res.cloudinary.com/dbgvo56a1/image/upload/v1661951077/females/65_ozf3z6.jpg"]
 
-
-  User.create!(
+  user = User.new(
 
     # each user is assigned an id from 1-20
-
-      id: id,
 
       name: Faker::Name.female_first_name,
       email: "test#{id}@giva.com",
@@ -47,8 +54,10 @@ User.delete_all
       # random bio and problem (if displaced = true) is assigned to user
 
       # bio: Faker::Lorem.paragraph(sentence_count: 6),
-      bio: bio_array.sample
+      bio: bio_array[id - 1]
 )
+user.photo.attach(io: female_pics[id - 1], filename: "fpic#{id}.jpg", content_type: "image/jpg")
+user.save
 end
 
 # generate 10 male users
@@ -64,7 +73,16 @@ end
               "I am a political refugee from the ME. social activist. hope to make this world better. i worked in theater and media and would like to continue this route",
               "I moved here 2 months ago when the war started. I am a parent of 3. we love trips in the woods and playing with our dog. I worked as a cook and had my own restaurant.",
               "Political refugee from Eastern Europe. just arrived here and need accomodation. I am a student of philosophy, about to major. worked in libraries and at university as TA."]
-
+  male_pics = ["https://res.cloudinary.com/dbgvo56a1/image/upload/v1661951109/males/87_hnlmur.jpg",
+               "https://res.cloudinary.com/dbgvo56a1/image/upload/v1661951109/males/60_km4bsi.jpg",
+               "https://res.cloudinary.com/dbgvo56a1/image/upload/v1661951109/males/58_dvinrv.jpg",
+               "https://res.cloudinary.com/dbgvo56a1/image/upload/v1661951109/males/58_dvinrv.jpg",
+               "https://res.cloudinary.com/dbgvo56a1/image/upload/v1661951109/males/30_qozm8p.jpg",
+               "https://res.cloudinary.com/dbgvo56a1/image/upload/v1661951109/males/29_h6rol5.jpg",
+               "https://res.cloudinary.com/dbgvo56a1/image/upload/v1661951109/males/26_nrzuqx.jpg",
+               "https://res.cloudinary.com/dbgvo56a1/image/upload/v1661951109/males/34_nq8ysj.jpg",
+               "https://res.cloudinary.com/dbgvo56a1/image/upload/v1661951109/males/54_przlxu.jpg",
+               "https://res.cloudinary.com/dbgvo56a1/image/upload/v1661951109/males/46_fnhty3.jpg"]
 
   User.create!(
 
@@ -88,8 +106,10 @@ end
       # random bio and problem (if displaced = true) is assigned to user
 
       # bio: Faker::Lorem.paragraph(sentence_count: 6),
-      bio: bio_array.sample
+      bio: bio_array[id - 11]
 )
+user.photo.attach(io: male_pics[id - 11], filename: "mpic#{id}.jpg", content_type: "image/jpg")
+user.save
 end
 
 User.all.map do |user|

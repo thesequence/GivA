@@ -13,13 +13,8 @@ class ReviewsController < ApplicationController
     if @review.save!
       redirect_to new_profile_review_path(:profile_id)
     else
-<<<<<<< HEAD
-      render "new_user_review", status: :unprocessable_entity
-    end
-=======
       render :new, status: :unprocessable_entity
-   end
->>>>>>> 5c29f676d0335409a8d1f8c8719046cc6ffd677d
+    end
   end
 
   private

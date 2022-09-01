@@ -14,6 +14,7 @@
 ActiveRecord::Schema[7.0].define(version: 2022_08_30_142705) do
 =======
 
+
 ActiveRecord::Schema[7.0].define(version: 2022_08_31_155507) do
 >>>>>>> 5c29f676d0335409a8d1f8c8719046cc6ffd677d
   # These are extensions that must be enabled in order to support this database

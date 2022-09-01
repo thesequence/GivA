@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
       redirect_to user_reviews_path(@user)
     else
       render "new_user_review", status: :unprocessable_entity
-   end
+    end
   end
 
   private

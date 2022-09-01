@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema[7.0].define(version: 2022_09_01_144200) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "buddies", force: :cascade do |t|
+    t.bigint "asker_id"
+    t.bigint "receiver_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["asker_id"], name: "index_buddies_on_asker_id"
+    t.index ["receiver_id"], name: "index_buddies_on_receiver_id"
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 

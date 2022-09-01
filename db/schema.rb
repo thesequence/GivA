@@ -10,9 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_31_155507) do
+
+
+ActiveRecord::Schema[7.0].define(version: 2022_09_01_144200) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "buddies", force: :cascade do |t|
+    t.bigint "asker_id"
+    t.bigint "receiver_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["asker_id"], name: "index_buddies_on_asker_id"
+    t.index ["receiver_id"], name: "index_buddies_on_receiver_id"
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -40,30 +55,28 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_31_155507) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+
   end
+
 
   create_table "buddies", force: :cascade do |t|
     t.bigint "asker_id"
     t.bigint "receiver_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status"
     t.index ["asker_id"], name: "index_buddies_on_asker_id"
     t.index ["receiver_id"], name: "index_buddies_on_receiver_id"
   end
 
-  create_table "chats", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "messages", force: :cascade do |t|
     t.string "content"
-    t.bigint "chat_id", null: false
-    t.bigint "user_id", null: false
+    t.bigint "sender_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["chat_id"], name: "index_messages_on_chat_id"
-    t.index ["user_id"], name: "index_messages_on_user_id"
+    t.bigint "buddy_id", null: false
+    t.index ["buddy_id"], name: "index_messages_on_buddy_id"
+    t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -96,8 +109,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_31_155507) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "buddies", "users", column: "asker_id"
   add_foreign_key "buddies", "users", column: "receiver_id"
-  add_foreign_key "messages", "chats"
+
   add_foreign_key "messages", "users"
+  add_foreign_key "messages", "buddies"
+  add_foreign_key "messages", "users", column: "sender_id"
   add_foreign_key "reviews", "buddies"
   add_foreign_key "reviews", "users"
 end

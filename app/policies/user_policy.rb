@@ -7,7 +7,7 @@ class UserPolicy < ApplicationPolicy
     end
 
     # def dashboard
-    # end
+    # ends
     def show
       record.displaced != user.displaced
     end

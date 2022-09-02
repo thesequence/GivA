@@ -14,6 +14,7 @@
 
 
 
+
 ActiveRecord::Schema[7.0].define(version: 2022_09_02_121806) do
 
 

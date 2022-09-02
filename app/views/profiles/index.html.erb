@@ -11,20 +11,29 @@
           <h4><%=profile.name%><h4>
         </div>
 
+
         <div class ="bio-tags" data-controller ="readmore">
-        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" data-action ="click->readmore#triggerread" data-readmore-target="button" aria-expanded="false" aria-controls="collapseExample">
-          <%= profile.bio[0...60] %>...read more
-        </button>
-        <div class="collapse" id="collapseExample" data-readmore-target="expand">
-          <div class="card card-body">
-         <%= profile.bio[60...1000] %>
+
+          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" data-action ="click->readmore#triggerread" data-readmore-target="button" aria-expanded="false" aria-controls="collapseExample">
+            <%= profile.bio[0...60] %>...read more
+          </button>
+
+          <div class="collapse" id="collapseExample" data-readmore-target="expand">
+            <div class="card card-body">
+          <%= profile.bio[60...1000] %>
           </div>
+
         </div>
 
-          <p><%= profile.bio %></p>
+
           <p><%= profile.problem %></p>
           <div class ="tags">
-            tag tag tag tag
+
+            <% profile.each do |tag| %>
+              <p><%= tag.title %></p>
+              <p><%= tag.language %></p>
+            <% end %>
+
           </div>
         </div>
         <div class ="btn-frame"><a class = "button" href="">Chat</a></div>

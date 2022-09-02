@@ -10,10 +10,11 @@ Rails.application.routes.draw do
     resources :buddies, only: %i[new create]
   end
 
+  resources :locations, only: %i[index show]
   root to: "pages#home"
 
   # resources :users, only: :show do
-   # resources :reviews, only: [:new, :create]
+  # resources :reviews, only: [:new, :create]
   # end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

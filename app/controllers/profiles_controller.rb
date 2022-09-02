@@ -7,5 +7,14 @@ class ProfilesController < ApplicationController
     @profile = User.find(params[:id])
     # authorize @profile
   end
-  
+
+  def new
+    @profile = User.new
+    authorize @profile
+  end
+
+  def create
+    
+  end
+
 end

@@ -15,5 +15,4 @@ class BuddiesController < ApplicationController
     @buddy.asker = current_user
     @buddy.status = "pending"
   end
-
 end

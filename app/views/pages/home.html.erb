@@ -1,10 +1,11 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<%# <h1>Pages#home</h1> %>
+<%# <p>Find me in app/views/pages/home.html.erb</p> %>
 
 <div class="container">
-  <div>
-  
-  </div>
-  <div class="logo" style="background-image: url(https://res.cloudinary.com/dbgvo56a1/image/upload/v1662111123/logo_bg_crnr8q.png);">
+  <div class="logo">
+    <%= link_to profiles_path do %>
+    <%= cl_image_tag "https://res.cloudinary.com/dbgvo56a1/image/upload/v1662111123/logo_bg_crnr8q.png",
+      width: 250, height: 250, crop: :fill %>
+    <% end %>
   </div>
 </div>

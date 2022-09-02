@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :local_buddies, class_name: "Buddy", foreign_key: :receiver_id, dependent: :destroy
 
   has_one_attached :photo
+  has_many :tags
 
   # :user_tags, :buddys,:language_tags
 

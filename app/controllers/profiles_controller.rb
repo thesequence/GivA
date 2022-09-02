@@ -7,4 +7,5 @@ class ProfilesController < ApplicationController
     @profile = User.find(params[:id])
     # authorize @profile
   end
+  
 end

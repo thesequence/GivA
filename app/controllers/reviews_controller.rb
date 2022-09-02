@@ -1,24 +1,25 @@
 class ReviewsController < ApplicationController
   def new
+    @buddy = Buddy.find(params[:buddy_id])
     @review = Review.new
-    @user = User.find(params[:user_id])
+    @review.buddy = @buddy
+    @review.user = current_user
+    authorize @review
   end
 
   def create
     @review = Review.new(review_params)
-    @review.user = @user
+    @review.buddy = Buddy.find(params[:buddy_id])
+    @review.user = current_user
+    authorize @review
     if @review.save
-      redirect_to user_reviews_path(@user)
+      redirect_to buddy_path(@review.buddy)
     else
-      render "new_user_review", status: :unprocessable_entity
-    end
+     render :new, status: :unprocessable_entity
+   end
   end
 
   private
-
-  # def set_restaurant
-  #   @restaurant = Restaurant.find(params[:restaurant_id])
-  # end
 
   def review_params
     params.require(:review).permit(:content)

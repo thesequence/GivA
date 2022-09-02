@@ -13,8 +13,29 @@ puts "deleting database"
 
 User.delete_all
 Tag.delete_all
+Location.delete_all
+UserTag.delete_all
 
 puts "seeding database"
+
+titles = %w[accomodation paperwork language job doctor kindergarden school police Ausländerbehörde visa immigration insurance]
+languages = %w[English Ukrainian German Arabic Vietnamese Turkish French]
+titles.each do |title|
+  tag = Tag.new(
+    title: title
+  )
+  tag.save
+end
+puts "created title tags"
+
+languages.each do |language|
+  tag = Tag.new(
+    language: language
+  )
+  tag.save
+end
+puts "created language tags"
+
 
 # generate 10 female users
 (1..10).each do |id|
@@ -64,8 +85,14 @@ puts "seeding database"
   )
   user.photo.attach(io: URI.open(female_pics[id - 1]), filename: "fpic#{id}.jpg", content_type: "image/jpg")
   user.save
+  user_tag = UserTag.new(
+    user: user,
+    tag: Tag.all.sample
+  )
+  user_tag.save
 end
 
+puts "created user tags"
 puts "created #{User.count}female users"
 # generate 10 male users
 
@@ -115,6 +142,11 @@ puts "created #{User.count}female users"
   )
   user.photo.attach(io: URI.open(male_pics[id - 11]), filename: "mpic#{id}.jpg", content_type: "image/jpg")
   user.save
+  user_tag = UserTag.new(
+    user: user,
+    tag: Tag.all.sample
+  )
+  user_tag.save
 end
 
 puts "created #{User.count} male users"
@@ -143,22 +175,19 @@ User.all.map do |user|
 end
 
 puts "created displaced people"
-puts "seeding complete"
 
-titles = %w[accomodation paperwork language job doctor kindergarden school police Ausländerbehörde visa immigration insurance]
-languages = %w[English Ukrainian German Arabic Vietnamese Turkish French]
+# tag seeding
 
-tag = Tag.new(
-  title: titles.sample(4..7),
-  language: languages.sample(1..3)
-)
-tag.save
 
-100.times do
+
+# location seeding
+20.times do
   locations = Location.new(
     address: "#{Faker::Address.street_address}, #{Faker::Address.city}",
-    category: %w[Pharmacy Doctor Donation Event Ausländerbehörde Anmeldung],
+    category: %w[Pharmacy Doctor Donation Event Ausländerbehörde Anmeldung].sample,
     description: ""
   )
   locations.save!
 end
+puts "created locations"
+puts "seeding complete"

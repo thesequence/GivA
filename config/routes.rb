@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :buddies, only: %i[new create]
   end
 
-  resources :locations, only: [:show]
+  resources :locations, only: %i[index show]
   root to: "pages#home"
 
   # resources :users, only: :show do

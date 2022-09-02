@@ -14,7 +14,19 @@ class ProfilesController < ApplicationController
   end
 
   def create
-    
+    @profile = User.new user_params
+    if @user.save == @user.displaced
+      sign_in @user
+      # flash[:success] = t('.success', name: current_user.name_or_email)
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
+  private
+
+  def user_params
+    params.require(:user).permit(:boolean)
+  end
 end

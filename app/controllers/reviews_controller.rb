@@ -15,13 +15,8 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to buddy_path(@review.buddy)
     else
-<<<<<<< HEAD
       render :new, status: :unprocessable_entity
     end
-=======
-     render :new, status: :unprocessable_entity
-   end
->>>>>>> f92293db5042fb60eb3b8121458d371502d39eae
   end
 
   private

@@ -24,7 +24,10 @@
           <p><%= profile.bio %></p>
           <p><%= profile.problem %></p>
           <div class ="tags">
-            tag tag tag tag
+            <% profile.each do |tag| %>
+              <p><%= tag.title %></p>
+              <p><%= tag.language %></p>
+            <% end %>
           </div>
         </div>
         <div class ="btn-frame"><a class = "button" href="">Chat</a></div>

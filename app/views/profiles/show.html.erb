@@ -2,13 +2,12 @@
   <div class="row">
     <div class="col-12 col-md-6 offset-lg-3">
       <div class="bg-white rounded p-3 shadow text-center">
-        <h1><%= @user.name %></h1>
-        <%= cl_image_tag @user.photo.key, crop: :fill, width: 500 %>
-        <h3><%= @user.name %></h3>
+        <h1><%= @profile.name %></h1>
+        <%# <%= cl_image_tag @profile.photo.key, crop: :fill, width: 500 %> 
         <p class="text-muted">About me:</p>
-        <h3><%= @user.bio %></h3>
+        <h3><%= @profile.bio %></h3>
         <p class="text-muted">Where I need your help:</p>
-        <h3><%= @user.problem %></h3>
+        <h3><%= @profile.problem %></h3>
         <div>
         </div>
       </div>

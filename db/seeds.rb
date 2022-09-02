@@ -145,11 +145,20 @@ end
 puts "created displaced people"
 puts "seeding complete"
 
-titles = %i[accomodation paperwork language job doctor kindergarden school police Ausländerbehörde visa immigration insurance]
-languages = %i[English Ukrainian German Arabic Vietnamese Turkish French]
+titles = %w[accomodation paperwork language job doctor kindergarden school police Ausländerbehörde visa immigration insurance]
+languages = %w[English Ukrainian German Arabic Vietnamese Turkish French]
 
 tag = Tag.new(
   title: titles.sample(4..7),
   language: languages.sample(1..3)
 )
 tag.save
+
+100.times do
+  locations = Location.new(
+    address: "#{Faker::Address.street_address}, #{Faker::Address.city}",
+    category: %w[Pharmacy Doctor Donation Event Ausländerbehörde Anmeldung],
+    description: ""
+  )
+  locations.save!
+end

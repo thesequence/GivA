@@ -13,8 +13,11 @@ puts "deleting database"
 
 User.delete_all
 Tag.delete_all
+
 Location.delete_all
 UserTag.delete_all
+
+
 
 puts "seeding database"
 
@@ -85,6 +88,7 @@ puts "created language tags"
   )
   user.photo.attach(io: URI.open(female_pics[id - 1]), filename: "fpic#{id}.jpg", content_type: "image/jpg")
   user.save
+
   user_tag = UserTag.new(
     user: user,
     tag: Tag.all.sample
@@ -142,6 +146,7 @@ puts "created #{User.count}female users"
   )
   user.photo.attach(io: URI.open(male_pics[id - 11]), filename: "mpic#{id}.jpg", content_type: "image/jpg")
   user.save
+
   user_tag = UserTag.new(
     user: user,
     tag: Tag.all.sample
@@ -191,3 +196,14 @@ puts "created displaced people"
 end
 puts "created locations"
 puts "seeding complete"
+
+
+titles = %i[accomodation paperwork language job doctor kindergarden school police Ausländerbehörde visa immigration insurance]
+languages = %i[English Ukrainian German Arabic Vietnamese Turkish French]
+
+tag = Tag.new(
+  title: titles.sample(4..7),
+  language: languages.sample(1..3)
+)
+tag.save
+

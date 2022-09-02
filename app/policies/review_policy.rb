@@ -6,7 +6,7 @@ class ReviewPolicy < ApplicationPolicy
   # end
 
   def create?
-    user.displaced && !record.user.displaced
+    user.displaced && !record.buddy.receiver.displaced
   end
 
   def new?

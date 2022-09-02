@@ -10,24 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-
 ActiveRecord::Schema[7.0].define(version: 2022_09_01_144200) do
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "buddies", force: :cascade do |t|
-    t.bigint "asker_id"
-    t.bigint "receiver_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["asker_id"], name: "index_buddies_on_asker_id"
-    t.index ["receiver_id"], name: "index_buddies_on_receiver_id"
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -55,9 +40,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_01_144200) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
-
   end
-
 
   create_table "buddies", force: :cascade do |t|
     t.bigint "asker_id"
@@ -109,8 +92,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_01_144200) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "buddies", "users", column: "asker_id"
   add_foreign_key "buddies", "users", column: "receiver_id"
-
-  add_foreign_key "messages", "users"
   add_foreign_key "messages", "buddies"
   add_foreign_key "messages", "users", column: "sender_id"
   add_foreign_key "reviews", "buddies"

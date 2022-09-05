@@ -5,8 +5,8 @@ class PagesController < ApplicationController
     @disable_nav = true
   end
 
-  def profiles
-    @profile = Profile.all
-  end
+  # def profiles
+  #   @profile = Profile.all
+  # end
 
 end

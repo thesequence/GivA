@@ -4,8 +4,12 @@ Rails.application.routes.draw do
 
 
   resources :buddies, only: %i[index show] do
-    resources :messages, only: :create
+    # resources :messages, only: %i[create]
     resources :reviews, only: %i[new create]
+  end
+
+  resources :chats, only: %i[create show] do
+    resources :messages, only: %i[create]
   end
 
   resources :profiles, only: %i[show index] do

@@ -4,27 +4,12 @@
       <%= image_tag "https://res.cloudinary.com/dbgvo56a1/image/upload/v1662371124/Frame_12_srnr1u.png" %>
     <% end %>
 
-    <div class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <div>
+      <%= link_to(profiles_path, class: "navbar-brand") do %>
       <%= image_tag "https://res.cloudinary.com/dbgvo56a1/image/upload/v1662371125/Group_6_fekylz.png" %>
+    <% end %>
     </div>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-        <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "Home", "#", class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Messages", "#", class: "nav-link" %>
-          </li>
-        
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
+
   </div>
 </div>

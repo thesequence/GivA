@@ -1,1 +1,9 @@
-<h1>Messages</h1>
+<% @sender = User.find(message.sender_id) %>
+
+<div id="message-<%= message.id %>">
+  <small>
+    <strong><%= @sender.name %></strong>
+    <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+  </small>
+  <p><%= message.content %></p>
+</div>

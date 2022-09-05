@@ -196,14 +196,3 @@ puts "created displaced people"
 end
 puts "created locations"
 puts "seeding complete"
-
-
-titles = %i[accomodation paperwork language job doctor kindergarden school police Ausländerbehörde visa immigration insurance]
-languages = %i[English Ukrainian German Arabic Vietnamese Turkish French]
-
-tag = Tag.new(
-  title: titles.sample(4..7),
-  language: languages.sample(1..3)
-)
-tag.save
-

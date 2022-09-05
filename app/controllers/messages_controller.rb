@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
     @chat = Chat.find(params[:chat_id])
     @message = Message.new(message_params)
     @message.chat = @chat
-    @message.user = current_user
+    @message.sender_id = current_user.id
     if @message.save
       ChatChannel.broadcast_to(
         @chat,
@@ -11,7 +11,7 @@ class MessagesController < ApplicationController
       )
       head :ok
     else
-      render "chat/show", status: :unprocessable_entity
+      render "chats/show", status: :unprocessable_entity
     end
   end
 

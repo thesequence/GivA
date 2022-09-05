@@ -78,8 +78,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_02_140206) do
     t.bigint "sender_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "buddy_id", null: false
-    t.index ["buddy_id"], name: "index_messages_on_buddy_id"
     t.index ["chat_id"], name: "index_messages_on_chat_id"
     t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
@@ -130,7 +128,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_02_140206) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "buddies", "users", column: "asker_id"
   add_foreign_key "buddies", "users", column: "receiver_id"
-  add_foreign_key "messages", "buddies"
   add_foreign_key "messages", "chats"
   add_foreign_key "messages", "users", column: "sender_id"
   add_foreign_key "reviews", "buddies"

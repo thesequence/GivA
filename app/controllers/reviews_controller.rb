@@ -4,14 +4,12 @@ class ReviewsController < ApplicationController
     @review = Review.new
     @review.buddy = @buddy
     @review.user = current_user
-    authorize @review
   end
 
   def create
     @review = Review.new(review_params)
     @review.buddy = Buddy.find(params[:buddy_id])
     @review.user = current_user
-    authorize @review
     if @review.save
       redirect_to buddy_path(@review.buddy)
     else

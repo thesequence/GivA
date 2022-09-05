@@ -1,7 +1,6 @@
 class BuddiesController < ApplicationController
   def show
     @buddy = Buddy.find(params[:id])
-    authorize @buddy
   end
 
   def new

@@ -183,27 +183,122 @@ puts "created displaced people"
 
 # tag seeding
 
-
-
 # location seeding
-20.times do
-  locations = Location.new(
-    address: "#{Faker::Address.street_address}, #{Faker::Address.city}",
-    category: %w[Pharmacy Doctor Donation Event Ausländerbehörde Anmeldung].sample,
-    description: ""
+
+# Bürgeramt
+Location.create(
+    address: "Potsdamer Str. 61, 10785 Berlin",
+    category: "Welcome Center",
+    description: "The Welcome Center is the counselling center of the Commissioner of the Berlin Senate for Integration and Migration and a first contact point of the Senate Department for Integration, Labor and Social Affairs for new arrivals, immigrants, people with a migration history and people without a German passport.",
+    opening_hour: "09:00",
+    closing_hour: "18:00"
   )
-  locations.save!
-end
+Location.create(
+  address: "Normannenstraße 1-2, 10367 Berlin",
+  category: "Bürgeramt",
+  description: "The citizens' office (Bürgeramt) handles many aspects of German bureaucracy.",
+  opening_hour: "09:00",
+  closing_hour: "18:00"
+  )
+Location.create(
+  address: "Keplerstraße 2, 10589 Berlin",
+  category: "Bürgeramt",
+  description: "The citizens' office (Bürgeramt) handles many aspects of German bureaucracy.",
+  opening_hour: "09:00",
+  closing_hour: "18:00"
+  )
+Location.create(
+  address: "Klosterstraße 71, 10179 Berlin",
+  category: "Bürgeramt",
+  description: "The citizens' office (Bürgeramt) handles many aspects of German bureaucracy.",
+  opening_hour: "09:00",
+  closing_hour: "18:00"
+  )
+Location.create(
+  address: "Mathilde-Jacob-Platz 1, 10551 Berlin",
+  category: "Bürgeramt",
+  description: "The citizens' office (Bürgeramt) handles many aspects of German bureaucracy.",
+  opening_hour: "09:00",
+  closing_hour: "18:00"
+  )
+
+  puts "created Bürgeramts"
+
+  # pharmacies
+Location.create(
+  address: "Unter den Linden 69D, 10117 Berlin",
+  category: "Pharmacy",
+  description: "In Berlin you will get prescription drugs only in licensed pharmacies in order to prevent any drug misuse.",
+  opening_hour: "09:00",
+  closing_hour: "18:00"
+)
+Location.create(
+  address: "Ecke, Friedrichstraße, Dorotheenstraße 151, 10117 Berlin",
+  category: "Pharmacy",
+  description: "In Berlin you will get prescription drugs only in licensed pharmacies in order to prevent any drug misuse.",
+  opening_hour: "09:00",
+  closing_hour: "18:00"
+)
+Location.create(
+  address: "Georgenstraße 25, 10117 Berlin",
+  category: "Pharmacy",
+  description: "In Berlin you will get prescription drugs only in licensed pharmacies in order to prevent any drug misuse.",
+  opening_hour: "09:00",
+  closing_hour: "18:00"
+)
+Location.create(
+  address: "Wilhelmstraße 93, 10117 Berlin",
+  category: "Pharmacy",
+  description: "In Berlin you will get prescription drugs only in licensed pharmacies in order to prevent any drug misuse.",
+  opening_hour: "09:00",
+  closing_hour: "18:00"
+)
+puts "created pharmacies"
+
+# donation spots
+Location.create(
+  address: "Friedrichstraße 19, 10969 Berlin",
+  category: "Donation spot",
+  description: "Come here to donate!",
+  opening_hour: "09:00",
+  closing_hour: "18:00"
+)
+Location.create(
+  address: "Bergmannstraße 15, 10961 Berlin",
+  category: "Donation spot",
+  description: "Come here to donate!",
+  opening_hour: "09:00",
+  closing_hour: "18:00"
+)
+Location.create(
+  address: "Blücherstraße 11, 10961 Berlin",
+  category: "Donation spot",
+  description: "Come here to donate!",
+  opening_hour: "09:00",
+  closing_hour: "18:00"
+)
+Location.create(
+  address: "Wallstraße 15 a, 10179 Berlin",
+  category: "Donation spot",
+  description: "Come here to donate!",
+  opening_hour: "09:00",
+  closing_hour: "18:00"
+)
+Location.create(
+  address: "Am Köllnischen Park 1, 10179 Berlin",
+  category: "Donation spot",
+  description: "Come here to donate!",
+  opening_hour: "09:00",
+  closing_hour: "18:00"
+)
+Location.create(
+  address: "Reinhardtstraße 18, 10117 Berlin",
+  category: "Donation spot",
+  description: "Come here to donate!",
+  opening_hour: "09:00",
+  closing_hour: "18:00"
+)
+puts "created donation spots"
+
 puts "created locations"
 puts "seeding complete"
-
-
-titles = %i[accomodation paperwork language job doctor kindergarden school police Ausländerbehörde visa immigration insurance]
-languages = %i[English Ukrainian German Arabic Vietnamese Turkish French]
-
-tag = Tag.new(
-  title: titles.sample(4..7),
-  language: languages.sample(1..3)
-)
-tag.save
-

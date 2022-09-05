@@ -1,6 +1,6 @@
 class LocationsController < ApplicationController
   def index
-    @locations = policy_scope(Location)
+    # @locations = policy_scope(Location)
 
     if params[:query].present?
       @locations = Location.where("address LIKE ?", "%#{params[:query]}%")
@@ -13,7 +13,8 @@ class LocationsController < ApplicationController
       {
         lat: location.latitude,
         lng: location.longitude,
-        info_window: render_to_string(partial: "info_window", locals: {location: location})
+        info_window: render_to_string(partial: "info_window", locals: {location: location}),
+        image_url: helpers.asset_url("https://res.cloudinary.com/dbgvo56a1/image/upload/v1662397564/Pin_hwnomy.svg")
       }
     end
   end

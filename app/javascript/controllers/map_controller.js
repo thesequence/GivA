@@ -19,10 +19,18 @@ export default class extends Controller {
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.info_window)
-      new mapboxgl.Marker()
-        .setLngLat([ marker.lng, marker.lat ])
-        .setPopup(popup)
-        .addTo(this.map)
+        const customMarker = document.createElement("div")
+    customMarker.className = "marker"
+    customMarker.style.backgroundImage = `url('https://res.cloudinary.com/dbgvo56a1/image/upload/v1662397564/Pin_hwnomy.svg')`
+    customMarker.style.backgroundSize = "contain"
+    customMarker.style.width = "25px"
+    customMarker.style.height = "36.98px"
+
+    // Pass the element as an argument to the new marker
+    new mapboxgl.Marker(customMarker)
+      .setLngLat([marker.lng, marker.lat])
+      .setPopup(popup)
+      .addTo(this.map)
     })
   }
   #fitMapToMarkers() {

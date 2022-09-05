@@ -1,4 +1,4 @@
-.footer {
+.footer .footer-links {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -6,12 +6,16 @@
   padding: 0px 30px;
   gap: 48px;
 
-  width: 360px;
+  width: 412px;
   height: 56px;
 
   /* Dark Periwinkle */
 
   background: #575766;
+}
+
+.footer .footer-links img {
+  height: 40px;
 }
 
 .wrapper {

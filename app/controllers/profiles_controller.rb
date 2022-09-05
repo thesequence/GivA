@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
   def index
+    sleep 3
     @profiles = policy_scope(User)
   end
 

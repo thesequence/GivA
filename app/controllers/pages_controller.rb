@@ -6,7 +6,7 @@ class PagesController < ApplicationController
   end
 
   def profiles
-    # @profile = Profile.all
+    @profile = Profile.all
   end
 
 end

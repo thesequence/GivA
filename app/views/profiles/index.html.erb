@@ -6,23 +6,51 @@
     <div class="card-giva">
 
       <div class="card__face card__face--front">
+        <div class="wrapper-div">
 
-        <%= cl_image_tag profile.photo.key, class:"avatar" %>
-        <h1><%=profile.name%><h1>
-        <h6>Need A Hand With:</h6>
-        <p><%= profile.problem %></p>
-        <div class ="tags">
-          tag tag tag tag
+          <div class="profile-info">
+            <%= cl_image_tag profile.photo.key, class:"avatar" %>
+            <h1><%=profile.name%><h1>
+          </div>
+
+          <div class="problem-wrapper">
+            <div class="problem">
+              <h6>Need A Hand With:</h6>
+              <p><%= profile.problem %></p>
+            </div>
+            <div class="arrow"> <img src="https://res.cloudinary.com/dbgvo56a1/image/upload/v1662386125/arrow-right_jxhaee.png" alt=""></div>
+          </div>
+
+          <div class="tags">
+           <span class="tag">
+           longer tag
+           </span>
+           <span class="tag">
+           tag
+           </span>
+          </div>
+
         </div>
-
       </div>
 
       <div class="card__face card__face--back">
+        <div class="wrapper-div">
 
-        <h4>About me</h4>
-        <p><%= profile.bio %></p>
-        <a class = "button" href="">Chat</a>
+          <div class="bio-wrapper">
+            <h6>About me</h6>
+            <div class="bio">
+              <p><%= profile.bio %></p>
+            </div>
+          </div>
 
+          <div class="arrow-left"> <img src="https://res.cloudinary.com/dbgvo56a1/image/upload/v1662386125/arrow-left_b0rgmu.png" alt=""></div>
+
+          <div class="buttons">
+            <a class="chat-button" href="">Chat</a>
+            <a class="buddy-button" href="">Buddy Up</a>
+          </div>
+
+        </div>
       </div>
 
     </div>

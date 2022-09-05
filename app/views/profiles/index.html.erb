@@ -1,39 +1,34 @@
-<div class ="container">
+<div class ="container-giva">
 
-  <% @profiles.each do |profile| %>
+<% @profiles.each do |profile| %>
 
-    <div class = "card">
-      <div class ="card-banner"></div>
+ <div class="scene scene--card-giva">
+    <div class="card-giva">
 
-      <div class="content-container">
-        <div class ="avatar-info">
-          <%= cl_image_tag profile.photo.key, class:"avatar" %>
-          <h4><%=profile.name%><h4>
+      <div class="card__face card__face--front">
+
+        <%= cl_image_tag profile.photo.key, class:"avatar" %>
+        <h1><%=profile.name%><h1>
+        <h6>Need A Hand With:</h6>
+        <p><%= profile.problem %></p>
+        <div class ="tags">
+          tag tag tag tag
         </div>
-
-        <div class ="bio-tags" data-controller ="readmore">
-        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" data-action ="click->readmore#triggerread" data-readmore-target="button" aria-expanded="false" aria-controls="collapseExample">
-          <%= profile.bio[0...60] %>...read more
-        </button>
-        <div class="collapse" id="collapseExample" data-readmore-target="expand">
-          <div class="card card-body">
-         <%= profile.bio[60...1000] %>
-          </div>
-        </div>
-
-          <p><%= profile.bio %></p>
-          <p><%= profile.problem %></p>
-          <div class ="tags">
-            tag tag tag tag
-          </div>
-        </div>
-        <div class ="btn-frame"><a class = "button" href="">Chat</a></div>
-
 
       </div>
 
+      <div class="card__face card__face--back">
+
+        <h4>About me</h4>
+        <p><%= profile.bio %></p>
+        <a class = "button" href="">Chat</a>
+
+      </div>
 
     </div>
 
+  </div>
   <% end %>
+
+
 </div>

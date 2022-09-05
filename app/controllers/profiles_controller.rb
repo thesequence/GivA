@@ -1,11 +1,10 @@
 class ProfilesController < ApplicationController
   def index
-    @profiles = policy_scope(User)
+    sleep 3
+    @profiles = User.all
   end
 
   def show
     @profile = User.find(params[:id])
-    # authorize @profile
   end
-  
 end

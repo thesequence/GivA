@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_01_144200) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_05_103738) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,6 +52,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_01_144200) do
     t.index ["receiver_id"], name: "index_buddies_on_receiver_id"
   end
 
+  create_table "locations", force: :cascade do |t|
+    t.string "address"
+    t.string "category"
+    t.text "description"
+    t.time "opening_hour"
+    t.time "closing_hour"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
+  end
+
   create_table "messages", force: :cascade do |t|
     t.string "content"
     t.bigint "sender_id", null: false
@@ -70,6 +82,22 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_01_144200) do
     t.bigint "buddy_id", null: false
     t.index ["buddy_id"], name: "index_reviews_on_buddy_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "title"
+    t.string "language"
+  end
+
+  create_table "user_tags", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag_id"], name: "index_user_tags_on_tag_id"
+    t.index ["user_id"], name: "index_user_tags_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -96,4 +124,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_01_144200) do
   add_foreign_key "messages", "users", column: "sender_id"
   add_foreign_key "reviews", "buddies"
   add_foreign_key "reviews", "users"
+  add_foreign_key "user_tags", "tags"
+  add_foreign_key "user_tags", "users"
 end

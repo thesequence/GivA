@@ -1,2 +1,8 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+  <div class="logo" data-controller="logo-rotate">
+    <%= link_to profiles_path do %>
+      <%= image_tag "https://res.cloudinary.com/dbgvo56a1/image/upload/v1662111123/logo_bg_crnr8q.png",
+        width: 250, height: 250, crop: :fill, class: "before-rotate", data: { action: "click->logo-rotate#rotate", "logo-rotate-target": "logo" } %>
+    <% end %>
+  </div>
+</div>

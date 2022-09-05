@@ -7,5 +7,11 @@ import { application } from "./application"
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import LogoRotateController from "./logo_rotate_controller"
+application.register("logo-rotate", LogoRotateController)
+
+import MapController from "./map_controller"
+application.register("map", MapController)
+
 import ReadmoreController from "./readmore_controller"
 application.register("readmore", ReadmoreController)

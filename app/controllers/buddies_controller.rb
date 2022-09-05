@@ -1,7 +1,6 @@
 class BuddiesController < ApplicationController
   def show
     @buddy = Buddy.find(params[:id])
-    authorize @buddy
   end
 
   def new
@@ -15,5 +14,4 @@ class BuddiesController < ApplicationController
     @buddy.asker = current_user
     @buddy.status = "pending"
   end
-
 end

@@ -1,1 +1,9 @@
 // Specific CSS for your home-page
+.before-rotate {
+  transform: rotate(0);
+}
+
+.after-rotate {
+  transition: transform 3s ease-in-out;
+  transform: rotate(180deg);
+}

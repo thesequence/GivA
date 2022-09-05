@@ -29,14 +29,14 @@
           <p><%= profile.problem %></p>
           <div class ="tags">
 
-            <% profile.each do |tag| %>
-              <p><%= tag.title %></p>
-              <p><%= tag.language %></p>
-            <% end %>
+
+          <p><%= tag.title %></p>
+          <p><%= tag.language %></p>
+
 
           </div>
         </div>
-        <div class ="btn-frame"><a class = "button" href="">Chat</a></div>
+         <%= button_to("chat", chats_path(id: profile.id), class: "btn-frame button") %>
 
 
       </div>

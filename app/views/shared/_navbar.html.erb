@@ -1,8 +1,6 @@
 <div class="navbar navbar-lewagon">
   <div class="container-fluid">
     <div><h1 class="nav-logo">GivA</h1></div>
-      <%= link_to(my_buddies_path, class: "navbar-brand") do %>
-      <%= image_tag "https://res.cloudinary.com/dbgvo56a1/image/upload/v1662389930/Group_6_wxvnna.svg" %>
-    <% end %>
+     <%= active_link_to '<i class="fa-solid fa-user"></i>'.html_safe, my_buddies_path,  class_active: 'back-active'%>
   </div>
 </div>

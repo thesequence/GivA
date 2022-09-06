@@ -16,8 +16,13 @@
               <div class="content-wrapper-front">
 
                 <div class="avatar-wrapper">
+                <% if profile.displaced %>
                   <%= cl_image_tag profile.photo.key, class:"avatar" %>
+                <% else %>
+                  <%= cl_image_tag profile.photo.key, class:"avatar" %>
+                <% end %>
                   <h1><%=profile.name%><h1>
+
                 </div>
 
                 <div class="hand-wrapper">
@@ -38,9 +43,7 @@
 
 
                 <div class="tag-wrapper">
-                  <% profile.tags.each do |tag| %>
-                    <span class="tag"><%= tag %></span>
-                  <% end %>
+
                 </div>
 
               </div>

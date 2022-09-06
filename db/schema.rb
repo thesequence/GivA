@@ -98,7 +98,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_05_103738) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "title"
-    t.string "language"
   end
 
   create_table "user_tags", force: :cascade do |t|

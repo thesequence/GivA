@@ -19,10 +19,10 @@
                   <%= cl_image_tag profile.photo.key, class:"avatar" %>
                   <h1><%=profile.name%><h1>
                 </div>
-                
+
                 <div class="hand-wrapper">
 
-                  <% if current_user.displaced %>
+                  <% if profile.displaced %>
                     <div class="hand">Need a hand with</div>
                     <div class="hand-content">
                       <%= profile.problem %>
@@ -38,10 +38,9 @@
 
 
                 <div class="tag-wrapper">
-                  <span class="tag">tag</span>
-                  <span class="tag">long tag</span>
-                  <span class="tag">longer tag</span>
-                  <span class="tag">tag</span>
+                  <% profile.tags.each do |tag| %>
+                    <span class="tag"><%= tag %></span>
+                  <% end %>
                 </div>
 
               </div>

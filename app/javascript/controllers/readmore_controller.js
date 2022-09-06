@@ -1,17 +1,7 @@
-import { Controller } from "@hotwired/stimulus"
+var cards = document.querySelectorAll('.card-giva');
 
-// Connects to data-controller="collapse"
-export default class extends Controller {
-  static targets = ["button", "readmoreContainer"]
-
-
-
-  connect() {
-    console.log("hello")
-  }
-
-  collapse(){
-    this.readmoreContainerTarget.classList.toggle("show")
-  }
-
-}
+[...cards].forEach((card)=>{
+  card.addEventListener( 'click', function() {
+    card.classList.toggle('is-flipped');
+  });
+});

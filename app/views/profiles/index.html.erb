@@ -1,48 +1,68 @@
-<div class ="container">
+<div class ="container-giva">
 
-  <% @profiles.each do |profile| %>
+<% @profiles.each do |profile| %>
 
-    <div class = "card">
-      <div class ="card-banner"></div>
+ <div class="scene scene--card-giva">
+    <div class="card-giva">
 
-      <div class="content-container">
-        <div class ="avatar-info">
-          <%= cl_image_tag profile.photo.key, class:"avatar" %>
-          <h4><%=profile.name%><h4>
-        </div>
+      <div class="card__face card__face--front">
+        <div class="wrapper-div">
 
+          <div class="profile-info">
+            <%= cl_image_tag profile.photo.key, class:"avatar" %>
+            <h1><%=profile.name%></h1>
+          </div>
 
-        <div class ="bio-tags" data-controller ="readmore">
+          <div class="problem-wrapper">
+            <div class="problem">
+              <h6>Need A Hand With:</h6>
+              <p><%= profile.problem %></p>
+            </div>
+            <div class="arrow"> <img src="https://res.cloudinary.com/dbgvo56a1/image/upload/v1662386125/arrow-right_jxhaee.png" alt=""></div>
+          </div>
 
-          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" data-action ="click->readmore#triggerread" data-readmore-target="button" aria-expanded="false" aria-controls="collapseExample">
-            <%= profile.bio[0...60] %>...read more
-          </button>
-
-          <div class="collapse" id="collapseExample" data-readmore-target="expand">
-            <div class="card card-body">
-          <%= profile.bio[60...1000] %>
+          <div class="tags">
+           <span class="tag">
+           longer tag
+           </span>
+           <span class="tag">
+           tag
+           </span>
           </div>
 
         </div>
-
-
-          <p><%= profile.problem %></p>
-          <div class ="tags">
-
-
-          <p><%= tag.title %></p>
-          <p><%= tag.language %></p>
-
-
-          </div>
-        </div>
-         <%= button_to("chat", chats_path(id: profile.id), class: "btn-frame button") %>
-
-
       </div>
 
+      <div class="card__face card__face--back">
+        <div class="wrapper-div-back">
+
+          <div class="arrow-left"> <img src="https://res.cloudinary.com/dbgvo56a1/image/upload/v1662386125/arrow-left_b0rgmu.png" alt=""></div>
+
+          <div class="content-wrapper">
+
+            <div class="bio-wrapper">
+              <h6>About me</h6>
+              <div class="bio">
+                <p><%= profile.bio %></p>
+              </div>
+            </div>
+
+
+
+            <div class="buttons">
+              <a class="chat-button" href="">Chat</a>
+              <a class="buddy-button" href="">Buddy Up</a>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
 
     </div>
 
+  </div>
   <% end %>
+
+
 </div>

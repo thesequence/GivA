@@ -1,28 +1,50 @@
-
-.card {
+// styling of flipping card function
+.scene {
+  display: inline-block;
   width: 324px;
   height: 389px;
+  margin: 20px;
+  perspective: 600px;
+}
+
+.card-giva.is-flipped {
+  transform: translateX(-100%) rotateY(-180deg);
+}
+
+.card-giva {
   position: relative;
-  border-radius: 20px;
-  margin-bottom: 16px;
-}
-
-.card-banner {
-  border-top-left-radius: 19px;
-  border-top-right-radius: 19px;
   width: 100%;
-  background-color: $my-perrywinkle;
-  height: 68px;
-}
-
-.content-container {
-  position: absolute;
-  top: 20px;
   height: 100%;
-  width: 100%;
-  justify-content: center;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transform-origin: center right;
+  transition: transform 1s;
+  border: 1px;
+  border-style: solid;
+  border-color: $my-perry-dark;
   border-radius: 20px;
+  font-family: "Raleway";
+  background-color: white;
 }
+
+.card__face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  text-align: center;
+}
+
+.card__face--front {
+
+}
+
+.card__face--back {
+  transform: rotateY(180deg);
+}
+
+// styling of elements in card/body
+
 
 .avatar {
   border-radius: 50%;
@@ -30,58 +52,143 @@
   height: 100px;
 }
 
-.avatar-info {
-  text-align: center;
+.buttons {
+  display:flex;
+  justify-content: space-between;
+  margin-right: 25px;
 }
 
-.bio-tags {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-}
+.chat-button {
 
-.button {
-  font-size: 16px;
-  font-weight: 550;
-  padding: 10px 60px;
-  border-radius: 24px;
-  background-color: $my-mint;
   color: black;
+
   text-decoration: none;
-}
-
-.btn-frame {
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  top: 338px;
-  left: 102px;
-}
-
-.tags{
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 5px 20px;
+  padding: 10px 60px;
   gap: 10px;
-  position: absolute;
-  width: 55px;
-  height: 22px;
-  left: 157px;
-  top: 280px;
-  /* Oxford Blue */
-  border: 1px solid #081D33;
+
+  width: 130px;
+  height: 39px;
+
+  /* Minty Green */
+
+  background: #B8E6C7;
   border-radius: 20px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.buddy-button {
+  // font-size: small;
+  // text-align: center;
+  // font-size: 16px;
+  // font-weight: 550;
+  // padding: 10px 60px;
+  // border-radius: 24px;
+  // background-color: $my-perry-light;
+  color: black;
+  // text-decoration: none;
+  // width: 130px;
+  // height: 39px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  // padding: 10px 60px;
+  gap: 10px;
+
+  width: 130px;
+  height: 39px;
+
+  /* Minty Green */
+
+  background: $my-perry-light;
+  border-radius: 20px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+
+.wrapper-div {
+  margin:16px 20px 16px 20px;
 }
 
 
 
-.more {
-  display: none;
+.container-giva {
+  background-color: #F5F5FF;
 }
 
-.show{
+body {
+  color: #081D33 !important;
+}
 
+h6 {
+  color:$my-perry-light;
+  font-size: 14px !important;
+  margin-bottom: 0px !important;
+}
+
+h1{
+  font-size: 32px !important;
+  font-weight: lighter;
+}
+
+.problem{
+  text-align: left;
+}
+
+.problem-wrapper{
+  display:flex;
+  justify-content: space-between;
+  margin: 30px 0px 30px 0px;
+}
+
+.tag{
+  border: 1px solid $my-perry-dark;
+  border-color: $my-perry-dark;
+  border-radius: 20px;
+  margin-right: 16px;
+  padding: 5px 20px 5px 20px;
+  gap: 10px;
+
+}
+
+
+
+.arrow-left{
+  display: flex;
+  align-items: center;
+  margin-left: 16px;
+  width: 10%;
+}
+
+.wrapper-div-back {
+  display: flex;
+  height: inherit;
+}
+
+.bio {
+  p {
+    margin-right: 25px;
+  }
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
 }

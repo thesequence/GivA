@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :reviews, only: %i[new create]
   end
 
-  resources :chats, only: %i[create show] do
+  resources :chats, only: %i[index create show] do
     resources :messages, only: %i[create]
   end
 

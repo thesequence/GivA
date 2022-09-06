@@ -1,4 +1,8 @@
 class ChatsController < ApplicationController
+  def index
+    @chats = Chat.all
+  end
+
   def show
     @chat = Chat.find(params[:id])
     @message = Message.new
@@ -10,5 +14,9 @@ class ChatsController < ApplicationController
     @chat.user_a_id = current_user.id
     @chat.user_b_id = @user_b.id
     redirect_to chat_path(@chat) if @chat.save
+  end
+
+  def exists?
+    @chat_id => 
   end
 end

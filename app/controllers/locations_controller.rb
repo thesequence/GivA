@@ -1,7 +1,5 @@
 class LocationsController < ApplicationController
   def index
-    # @locations = policy_scope(Location)
-
     if params[:query].present?
       @locations = Location.where("address LIKE ?", "%#{params[:query]}%")
     else

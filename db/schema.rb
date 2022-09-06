@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema[7.0].define(version: 2022_09_06_145310) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,6 +54,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_06_145310) do
     t.index ["receiver_id"], name: "index_buddies_on_receiver_id"
   end
 
+  create_table "chats", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_a_id"
+    t.bigint "user_b_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_a_id"], name: "index_chats_on_user_a_id"
+    t.index ["user_b_id"], name: "index_chats_on_user_b_id"
+  end
+
   create_table "locations", force: :cascade do |t|
     t.string "address"
     t.string "category"
@@ -66,11 +78,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_06_145310) do
 
   create_table "messages", force: :cascade do |t|
     t.string "content"
+    t.bigint "chat_id", null: false
     t.bigint "sender_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "buddy_id", null: false
-    t.index ["buddy_id"], name: "index_messages_on_buddy_id"
+    t.index ["chat_id"], name: "index_messages_on_chat_id"
     t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
 
@@ -89,7 +101,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_06_145310) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "title"
-    t.string "language"
   end
 
   create_table "user_tags", force: :cascade do |t|
@@ -113,21 +124,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_06_145310) do
     t.text "bio"
     t.text "problem"
     t.boolean "displaced", default: true, null: false
-    t.bigint "tags_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["tags_id"], name: "index_users_on_tags_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "buddies", "users", column: "asker_id"
   add_foreign_key "buddies", "users", column: "receiver_id"
-  add_foreign_key "messages", "buddies"
+  add_foreign_key "messages", "chats"
   add_foreign_key "messages", "users", column: "sender_id"
   add_foreign_key "reviews", "buddies"
   add_foreign_key "reviews", "users"
   add_foreign_key "user_tags", "tags"
   add_foreign_key "user_tags", "users"
-  add_foreign_key "users", "tags", column: "tags_id"
 end

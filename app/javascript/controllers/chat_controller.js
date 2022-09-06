@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 import { createConsumer } from "@rails/actioncable"
 
-// Connects to data-controller="chat-subscription"
+// Connects to data-controller="chat"
 export default class extends Controller {
   static values = { chatId: Number }
   static targets = ["messages"]
@@ -11,10 +11,11 @@ export default class extends Controller {
       { channel: "ChatChannel", id: this.chatIdValue },
       { received: data => this.#insertMessageAndScrollDown(data) }
     )
-    console.log(`Subscribed to the chatroom with the id ${this.chatIdValue}.`)
+    console.log(`Subscribed to the chat with the id ${this.chatIdValue}.`)
   }
 
   #insertMessageAndScrollDown(data) {
+    console.log(data)
     this.messagesTarget.insertAdjacentHTML("beforeend", data)
     this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
   }

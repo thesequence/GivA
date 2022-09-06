@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :local_buddies, class_name: "Buddy", foreign_key: :receiver_id, dependent: :destroy
 
   has_one_attached :photo
+  has_many :user_tags
   has_many :tags, through: :user_tags
 
   # :user_tags, :buddys,:language_tags
@@ -29,9 +30,6 @@ class User < ApplicationRecord
   # def my_pending_requests
   #   buddies_as_receiver.where(status: :pending)
   # end
-
-
-
 end
 
 

@@ -1,18 +1,18 @@
 <div class="container chat"
-  data-controller="chat-subscription"
-  data-chat-subscription-chat-id-value="<%= @chat.id %>"
+  data-controller="chat"
+  data-chat-chat-id-value="<%= @chat.id %>"
 >
   <h1>#<%= @chat.name %></h1>
 
-  <div class="messages" data-chat-subscription-target="messages">
+  <div class="messages" data-chat-target="messages">
     <% @chat.messages.each do |message| %>
       <%= render "messages/message", message: message %>
     <% end %>
   </div>
 
   <%= simple_form_for [@chat, @message],
-  html: { data: { action: "turbo:submit-end->chat-subscription#resetForm" }, class: "d-flex" } do |f|
-%>
+  html: { data: { action: "turbo:submit-end->chat#resetForm" }, class: "d-flex" } do |f|
+  %>
     <%= f.input :content,
       label: false,
       placeholder: "Message ##{@chat.name}",

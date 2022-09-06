@@ -1,15 +1,23 @@
 <div class="footer">
   <div class="footer-links">
-  <%= link_to(profiles_path, class: "navbar-brand") do %>
-      <%= image_tag "https://res.cloudinary.com/dbgvo56a1/image/upload/v1662389930/Group_5_i79aaj.svg" %>
-    <% end %>
-    <%= link_to(profiles_path, class: "navbar-brand") do %>
+  <%# <%= active_link_to (profiles_path, class_active: 'back-active') do %>
+      <%# <%= image_tag "https://res.cloudinary.com/dbgvo56a1/image/upload/v1662389930/Group_5_i79aaj.svg" %>
+    <%# <% end %>
+
+<%= active_link_to '<i class="fa-brands fa-facebook"></i>'.html_safe, profiles_path,  class_active: 'back-active'%>
+
+<%#
+<%= active_link_to "Profile", profiles_path, class_active: 'back-active' do  %>
+    <%# <%= image_tag "https://res.cloudinary.com/dbgvo56a1/image/upload/v1662389930/Group_5_i79aaj.svg" %>
+<%# <% end %>
+
+    <%= link_to(chats_path, class: "navbar-brand") do %>
       <%= image_tag "https://res.cloudinary.com/dbgvo56a1/image/upload/v1662389930/Group_7_qacxb6.svg" %>
     <% end %>
     <%= link_to(locations_path, class: "navbar-brand") do %>
       <%= image_tag "https://res.cloudinary.com/dbgvo56a1/image/upload/v1662389930/Group_4_saamd1.svg" %>
     <% end %>
-    <%= link_to(profiles_path, class: "navbar-brand") do %>
+    <%= link_to(buddies_path, class: "navbar-brand") do %>
       <%= image_tag "https://res.cloudinary.com/dbgvo56a1/image/upload/v1662389930/Group_487_ydx2i9.svg" %>
     <% end %>
   </div>

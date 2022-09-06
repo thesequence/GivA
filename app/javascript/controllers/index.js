@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import ChatController from "./chat_controller"
+application.register("chat", ChatController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
@@ -12,6 +15,9 @@ application.register("logo-rotate", LogoRotateController)
 
 import MapController from "./map_controller"
 application.register("map", MapController)
+
+import NavigationController from "./navigation_controller"
+application.register("navigation", NavigationController)
 
 import ReadmoreController from "./readmore_controller"
 application.register("readmore", ReadmoreController)

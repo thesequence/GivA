@@ -1,67 +1,95 @@
 <div class ="container-giva">
 
-<% @profiles.each do |profile| %>
+  <% @profiles.each do |profile| %>
 
- <div class="scene scene--card-giva">
-    <div class="card-giva">
+    <div class="scene scene--card-giva">
 
-      <div class="card__face card__face--front">
-        <div class="wrapper-div">
+      <div class="card-giva">
 
-          <div class="profile-info">
-            <%= cl_image_tag profile.photo.key, class:"avatar" %>
-            <h1><%=profile.name%></h1>
-          </div>
+          <div class="card__face card__face--front">
 
-          <div class="problem-wrapper">
-            <div class="problem">
-              <h6>Need A Hand With:</h6>
-              <p><%= profile.problem %></p>
-            </div>
-            <div class="arrow"> <img src="https://res.cloudinary.com/dbgvo56a1/image/upload/v1662386125/arrow-right_jxhaee.png" alt=""></div>
-          </div>
+            <div class="wrapper-div-front">
 
-          <div class="tags">
-           <span class="tag">
-           longer tag
-           </span>
-           <span class="tag">
-           tag
-           </span>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="card__face card__face--back">
-        <div class="wrapper-div-back">
-
-          <div class="arrow-left"> <img src="https://res.cloudinary.com/dbgvo56a1/image/upload/v1662386125/arrow-left_b0rgmu.png" alt=""></div>
-
-          <div class="content-wrapper">
-
-            <div class="bio-wrapper">
-              <h6>About me</h6>
-              <div class="bio">
-                <p><%= profile.bio %></p>
+              <div class="padding-div">
               </div>
-            </div>
+
+              <div class="content-wrapper-front">
+
+                <div class="avatar-wrapper">
+                  <%= cl_image_tag profile.photo.key, class:"avatar" %>
+                  <h1><%=profile.name%><h1>
+                </div>
+
+                <div class="hand-wrapper">
+
+                  <% if profile.displaced %>
+                    <div class="hand">Need a hand with</div>
+                    <div class="hand-content">
+                      <%= profile.problem %>
+                    </div>
+                  <% else %>
+                    <div class="hand">Give a hand with</div>
+                    <div class="hand-content">
+                      <%= profile.problem %>
+                    </div>
+                  <% end %>
+
+                </div>
 
 
+                <div class="tag-wrapper">
+                  <% profile.tags.each do |tag| %>
+                    <span class="tag"><%= tag %></span>
+                  <% end %>
+                </div>
 
-            <div class="buttons">
-              <a class="chat-button" href="">Chat</a>
-              <a class="buddy-button" href="">Buddy Up</a>
+              </div>
+
+              <div class="arrow-right">
+                <img src="https://res.cloudinary.com/dbgvo56a1/image/upload/v1662386125/arrow-right_jxhaee.png" alt="">
+              </div>
+
             </div>
 
           </div>
 
-        </div>
+
+
+          <div class="card__face card__face--back">
+
+            <div class="wrapper-div-back">
+
+              <div class="arrow-left">
+                <img src="https://res.cloudinary.com/dbgvo56a1/image/upload/v1662386125/arrow-left_b0rgmu.png" alt="">
+              </div>
+
+              <div class="content-wrapper-back">
+
+                <div class="bio-wrapper">
+                  <div class="my-bio">About me</div>
+                  <div class="bio">
+                    <%= profile.bio %>
+                  </div>
+                </div>
+
+                <div class="button-wrapper">
+                    <a href="" class="chat-button">Chat</a>
+                    <a href="" class="buddy-button">Buddy Up</a>
+                </div>
+
+              </div>
+
+              <div class="padding-div">
+              </div>
+
+            </div>
+
+          </div>
+
       </div>
 
     </div>
 
-  </div>
   <% end %>
 
 

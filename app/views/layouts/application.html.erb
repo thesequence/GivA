@@ -15,9 +15,8 @@
   </head>
 
   <body>
-    <div class="wrapper">
+    <div class="wrapper custom-mobile-layout">
       <%= render "shared/navbar" unless @disable_nav %>
-      <div class="test"></div>
       <%= yield %>
       <%= render "shared/tabbar" %>
     </div>

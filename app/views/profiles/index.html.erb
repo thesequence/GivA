@@ -19,14 +19,23 @@
                   <%= cl_image_tag profile.photo.key, class:"avatar" %>
                   <h1><%=profile.name%><h1>
                 </div>
-
+                
                 <div class="hand-wrapper">
-                  <div class="hand">Need A Hand </div>
-                  <div class="hand-content">
-                    Need help with
-                    Anmmeldung
-                  </div>
+
+                  <% if current_user.displaced %>
+                    <div class="hand">Need a hand with</div>
+                    <div class="hand-content">
+                      <%= profile.problem %>
+                    </div>
+                  <% else %>
+                    <div class="hand">Give a hand with</div>
+                    <div class="hand-content">
+                      <%= profile.problem %>
+                    </div>
+                  <% end %>
+
                 </div>
+
 
                 <div class="tag-wrapper">
                   <span class="tag">tag</span>
@@ -58,7 +67,7 @@
               <div class="content-wrapper-back">
 
                 <div class="bio-wrapper">
-                  <h1 class="my-bio">About me</h1>
+                  <div class="my-bio">About me</div>
                   <div class="bio">
                     <%= profile.bio %>
                   </div>

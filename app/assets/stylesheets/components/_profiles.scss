@@ -19,7 +19,7 @@
   transform-style: preserve-3d;
   transform-origin: center right;
   transition: transform 1s;
-  // box-shadow: 1px -1px 4px 1px rgba(0, 0, 0, 0.2), -1px 1px 4px 1px rgba(0, 0, 0, 0.2);
+  //  box-shadow: 1px -1px 4px 1px rgb(255, 255, 255), -1px 1px 4px 1px rgb(255, 255, 255);
   // border: 1px;
   // border-style: solid;
   // border-color: $my-perry-dark;
@@ -170,6 +170,10 @@
   padding: 20px;
 }
 
+.my-bio{
+  color: $my-perry-light;
+}
+
 .button-wrapper{
   display: flex;
   justify-content: space-evenly;
@@ -191,7 +195,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  box-shadow: 1px -1px 1px 0px rgba(0, 0, 0, 0.2), -1px 1px 1px 0px rgba(0, 0, 0, 0.2);
+  // box-shadow: 1px -1px 1px 0px rgba(0, 0, 0, 0.2), -1px 1px 1px 0px rgba(0, 0, 0, 0.2);
 }
 
 .buddy-button{
@@ -209,7 +213,7 @@
   justify-content: center;
   align-items: center;
   white-space:nowrap;
-  box-shadow: 1px -1px 1px 0px rgba(0, 0, 0, 0.2), -1px 1px 1px 0px rgba(0, 0, 0, 0.2);
+  // box-shadow: 1px -1px 1px 0px rgba(0, 0, 0, 0.2), -1px 1px 1px 0px rgba(0, 0, 0, 0.2);
 }
 
 .arrow-left{

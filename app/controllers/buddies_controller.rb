@@ -17,5 +17,10 @@ class BuddiesController < ApplicationController
     @buddy.receiver = @local_person
     @buddy.asker = current_user
     @buddy.status = "pending"
+    if @buddy.save!
+      redirect_to my_buddies_path
+    else
+      render new, notice: 'Buddy not created'
+    end
   end
 end

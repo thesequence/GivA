@@ -331,7 +331,7 @@ puts "created locations"
 # Split users into two array through PARTITION
 # Create a Random number generator by counting an array.
 def random_user_gen(array)
-  rand = rand(0..array.length)
+  rand = rand(0..array.length - 1)
   array[rand]
 end
 

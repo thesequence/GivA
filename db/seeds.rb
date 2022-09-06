@@ -83,8 +83,8 @@ puts "created language tags"
     # random bio and problem (if displaced = true) is assigned to user
 
     # bio: Faker::Lorem.paragraph(sentence_count: 6),
-    bio: bio_array[id - 1],
-    tag: Tag.first
+    bio: bio_array[id - 1]
+    # tag: Tag.first
   )
   user.photo.attach(io: URI.open(female_pics[id - 1]), filename: "fpic#{id}.jpg", content_type: "image/jpg")
   user.save
@@ -143,8 +143,8 @@ puts "created #{User.count}female users"
     # random bio and problem (if displaced = true) is assigned to user
 
     # bio: Faker::Lorem.paragraph(sentence_count: 6),
-    bio: bio_array[id - 11],
-    tag: Tag.last
+    bio: bio_array[id - 11]
+    # tag: Tag.last
   )
   user.photo.attach(io: URI.open(male_pics[id - 11]), filename: "mpic#{id}.jpg", content_type: "image/jpg")
   user.save
@@ -190,7 +190,7 @@ User.all.map do |user|
     # user.problem = Faker::Lorem.paragraph(sentence_count: 2)
     user.problem = problem_array.sample
   else
-    user.solution = solution_array.sample
+    user.problem = solution_array.sample
   end
   user.save
 end

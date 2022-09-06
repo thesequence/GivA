@@ -52,16 +52,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_06_124830) do
     t.index ["receiver_id"], name: "index_buddies_on_receiver_id"
   end
 
-  create_table "chats", force: :cascade do |t|
-    t.string "name"
-    t.bigint "user_a_id"
-    t.bigint "user_b_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_a_id"], name: "index_chats_on_user_a_id"
-    t.index ["user_b_id"], name: "index_chats_on_user_b_id"
-  end
-
   create_table "locations", force: :cascade do |t|
     t.string "address"
     t.string "category"
@@ -76,11 +66,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_06_124830) do
 
   create_table "messages", force: :cascade do |t|
     t.string "content"
-    t.bigint "chat_id", null: false
     t.bigint "sender_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["chat_id"], name: "index_messages_on_chat_id"
+    t.bigint "buddy_id", null: false
+    t.index ["buddy_id"], name: "index_messages_on_buddy_id"
     t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
 
@@ -132,7 +122,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_06_124830) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "buddies", "users", column: "asker_id"
   add_foreign_key "buddies", "users", column: "receiver_id"
-  add_foreign_key "messages", "chats"
+  add_foreign_key "messages", "buddies"
   add_foreign_key "messages", "users", column: "sender_id"
   add_foreign_key "reviews", "buddies"
   add_foreign_key "reviews", "users"

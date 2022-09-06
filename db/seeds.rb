@@ -11,13 +11,12 @@ require "faker"
 
 puts "deleting database"
 
+Buddy.delete_all
 User.delete_all
 Tag.delete_all
 
 Location.delete_all
 UserTag.delete_all
-
-
 
 puts "seeding database"
 
@@ -84,7 +83,8 @@ puts "created language tags"
     # random bio and problem (if displaced = true) is assigned to user
 
     # bio: Faker::Lorem.paragraph(sentence_count: 6),
-    bio: bio_array[id - 1]
+    bio: bio_array[id - 1],
+    tag: Tag.first
   )
   user.photo.attach(io: URI.open(female_pics[id - 1]), filename: "fpic#{id}.jpg", content_type: "image/jpg")
   user.save
@@ -94,6 +94,7 @@ puts "created language tags"
     tag: Tag.all.sample
   )
   user_tag.save
+
 end
 
 puts "created user tags"
@@ -142,7 +143,8 @@ puts "created #{User.count}female users"
     # random bio and problem (if displaced = true) is assigned to user
 
     # bio: Faker::Lorem.paragraph(sentence_count: 6),
-    bio: bio_array[id - 11]
+    bio: bio_array[id - 11],
+    tag: Tag.last
   )
   user.photo.attach(io: URI.open(male_pics[id - 11]), filename: "mpic#{id}.jpg", content_type: "image/jpg")
   user.save
@@ -167,16 +169,30 @@ User.all.map do |user|
     "help with immigration papers",
     "need a job",
     "accomodation. family of 3",
-    "need help with german immigration"
+    "need help with German immigration"
+  ]
+
+  solution_array = [
+    "I can offer accomodation for 2",
+    "good connections with Ausländerbehörde",
+    "can help with babysitting",
+    "job offer in gastronomy",
+    "nurse, can help with medical care",
+    "can accompany to immigration office",
+    "translator German & Ukrainian",
+    "got a lot of free baby stuff",
+    "got a couch to crash on",
+    "free room for a week",
+    "appartment for family of 4"
   ]
 
   if user.displaced
     # user.problem = Faker::Lorem.paragraph(sentence_count: 2)
     user.problem = problem_array.sample
-    user.save
   else
-    user.problem = nil
+    user.solution = solution_array.sample
   end
+  user.save
 end
 
 puts "created displaced people"
@@ -187,44 +203,44 @@ puts "created displaced people"
 
 # Bürgeramt
 Location.create(
-    address: "Potsdamer Str. 61, 10785 Berlin",
-    category: "Welcome Center",
-    description: "The Welcome Center is the counselling center of the Commissioner of the Berlin Senate for Integration and Migration and a first contact point of the Senate Department for Integration, Labor and Social Affairs for new arrivals, immigrants, people with a migration history and people without a German passport.",
-    opening_hour: "09:00",
-    closing_hour: "18:00"
-  )
+  address: "Potsdamer Str. 61, 10785 Berlin",
+  category: "Welcome Center",
+  description: "The Welcome Center is the counselling center of the Commissioner of the Berlin Senate for Integration and Migration and a first contact point of the Senate Department for Integration, Labor and Social Affairs for new arrivals, immigrants, people with a migration history and people without a German passport.",
+  opening_hour: "09:00",
+  closing_hour: "18:00"
+)
 Location.create(
   address: "Normannenstraße 1-2, 10367 Berlin",
   category: "Bürgeramt",
   description: "The citizens' office (Bürgeramt) handles many aspects of German bureaucracy.",
   opening_hour: "09:00",
   closing_hour: "18:00"
-  )
+)
 Location.create(
   address: "Keplerstraße 2, 10589 Berlin",
   category: "Bürgeramt",
   description: "The citizens' office (Bürgeramt) handles many aspects of German bureaucracy.",
   opening_hour: "09:00",
   closing_hour: "18:00"
-  )
+)
 Location.create(
   address: "Klosterstraße 71, 10179 Berlin",
   category: "Bürgeramt",
   description: "The citizens' office (Bürgeramt) handles many aspects of German bureaucracy.",
   opening_hour: "09:00",
   closing_hour: "18:00"
-  )
+)
 Location.create(
   address: "Mathilde-Jacob-Platz 1, 10551 Berlin",
   category: "Bürgeramt",
   description: "The citizens' office (Bürgeramt) handles many aspects of German bureaucracy.",
   opening_hour: "09:00",
   closing_hour: "18:00"
-  )
+)
 
-  puts "created Bürgeramts"
+puts "created Bürgeramts"
 
-  # pharmacies
+# pharmacies
 Location.create(
   address: "Unter den Linden 69D, 10117 Berlin",
   category: "Pharmacy",
@@ -301,4 +317,55 @@ Location.create(
 puts "created donation spots"
 
 puts "created locations"
+
+# puts "creating buddies for first and last user"
+
+# Buddy.create(
+#   asker: User.first,
+#   receiver: User.last
+# )
+
+# puts "created buddies for first and last user"
+
+# Select all users from DB
+# Split users into two array through PARTITION
+# Create a Random number generator by counting an array.
+# def random_user_gen(array)
+#   rand = rand(0..array.length)
+#   array[rand]
+# end
+
+# users = User.all
+# users_partition = users.partition { |user| user.displaced }
+# displaced = users_partition[0]
+# non_displaced = users_partition[1]
+
+#   displaced.each do |user|
+#     u = random_user_gen(non_displaced)
+#     asker: u
+#     user.save
+#   end
+
+#   non_displaced.each do |user|
+#     u = random_user_gen(displaced)
+#     receiver: u
+#     user.save
+#   end
+
+# User.all.map do |user|
+
+#   if user.displaced
+#     # user.problem = Faker::Lorem.paragraph(sentence_count: 2)
+#     user.problem = problem_array.sample
+#     user.save
+#   else
+#     user.problem = nil
+#   end
+# end
+# #   if user.displaced == true
+# #     asker: user.all.sample
+# #   receiver: user.sample.where(displaced: false)
+# # )
+# buddy.save
+
 puts "seeding complete"

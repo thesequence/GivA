@@ -330,27 +330,23 @@ puts "created locations"
 # Select all users from DB
 # Split users into two array through PARTITION
 # Create a Random number generator by counting an array.
-# def random_user_gen(array)
-#   rand = rand(0..array.length)
-#   array[rand]
-# end
+def random_user_gen(array)
+  rand = rand(0..array.length)
+  array[rand]
+end
 
-# users = User.all
-# users_partition = users.partition { |user| user.displaced }
-# displaced = users_partition[0]
-# non_displaced = users_partition[1]
+users = User.all
+users_partition = users.partition { |user| user.displaced }
+displaced_array = users_partition[0]
+non_displaced_array = users_partition[1]
 
-#   displaced.each do |user|
-#     u = random_user_gen(non_displaced)
-#     asker: u
-#     user.save
-#   end
+displaced_array.each do |displaced|
+  u = random_user_gen(non_displaced_array)
+  buddy = Buddy.new(asker: displaced, receiver: u, status: 0)
+  buddy.save!
+end
 
-#   non_displaced.each do |user|
-#     u = random_user_gen(displaced)
-#     receiver: u
-#     user.save
-#   end
+puts "created buddies"
 
 # User.all.map do |user|
 

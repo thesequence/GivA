@@ -17,7 +17,11 @@
 
   <body>
     <div class="wrapper custom-mobile-layout">
+    <% if params[:controller] == 'chats' && params[:action] == 'show' %>
+         <%= render "shared/chatbar", chat: @chat %>
+    <% else %>
       <%= render "shared/navbar" unless @disable_nav %>
+    <% end %>
       <%= yield %>
       <%= render "shared/tabbar" unless @disable_nav %>
     </div>

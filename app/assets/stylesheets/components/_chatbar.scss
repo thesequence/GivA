@@ -1,0 +1,62 @@
+.chatbar-giva {
+
+  background: rgba(196, 197, 230, 1);
+  flex-grow: 0;
+  position: fixed;
+  width: auto;
+}
+
+
+.chat-container-fluid {
+  background: rgba(196, 197, 230, 1);
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  margin-left: auto;
+  gap: 99px;
+  justify-content: space-between;
+  position: absolute;
+  height: 68px;
+  /* left: 0px; */
+  top: 0px;
+
+  /* Light Periwinkle */
+
+  background: #C4C5E6;
+
+  // gap: 8px;
+}
+
+.nav-logo {
+  color: white;
+  font-weight: lighter;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar-brand {
+  margin-right:none !important;
+}
+
+.chat-avatar-name {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  display: flex;
+  text-align: center;
+  letter-spacing: -0.02em;
+
+  /* White */
+
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.chat-avatar {
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+}

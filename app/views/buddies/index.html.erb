@@ -89,6 +89,9 @@
                   <% else %>
                     <%= link_to "Chat", chats_path(profile_id: profile.id), data: {turbo_method: :post}, class:"chat-button" %>
                   <% end %>
+                    <% buddies = Buddy.where(asker_id: current_user.id, receiver_id: profile.id) || Buddy.where(asker_id: profile.id, receiver_id: current_user.id) %>
+
+                    <%= link_to "Review", new_buddy_review_path(buddies.first.id), class:"chat-button"  %>
                   <a class="buddy-button" href="">Buddy Up</a>
                 </div>
 
@@ -103,6 +106,5 @@
 
       </div>
 
-    </div>
-
   <% end %>
+    </div>

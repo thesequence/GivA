@@ -12,6 +12,10 @@
 $body-font:"Raleway", sans-serif;
 $headers-font:"Raleway", sans-serif;
 
+a{
+  text-decoration: none !important;
+  color: #575766 !important;
+}
 
 
 // To use a font file (.woff) uncomment following lines

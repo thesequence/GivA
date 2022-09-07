@@ -43,7 +43,9 @@
 
 
                 <div class="tag-wrapper">
-
+                  <% profile.tags.each do |tag| %>
+                    <span class="tag"><%= tag %></span>
+                  <% end %>
                 </div>
 
               </div>

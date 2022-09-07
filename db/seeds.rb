@@ -11,12 +11,12 @@ require "faker"
 
 puts "deleting database"
 
+UserTag.delete_all
+Tag.delete_all
 Buddy.delete_all
 User.delete_all
-Tag.delete_all
 
 Location.delete_all
-UserTag.delete_all
 
 puts "seeding database"
 

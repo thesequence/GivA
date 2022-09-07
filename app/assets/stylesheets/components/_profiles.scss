@@ -148,14 +148,14 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  gap: 15px;
+  gap: 5px;
 }
 
 .tag{
   border: 1px solid $my-perry-dark;
   // border-color: black;
   border-radius: 20px;
-  margin-right: 16px;
+  font-size: 13px;
   padding: 0px 10px 0px 10px;
   width:fit-content;
   color: $my-perry-dark;
@@ -199,7 +199,7 @@
   border-radius: 20px;
   // border: 1px solid black;
   background: #B8E6C7;
-  color: black;
+  color: $my-perry-dark;
   font-weight: lighter;
   padding: 5px 20px 5px 20px;
   display: flex;
@@ -209,12 +209,37 @@
   // box-shadow: 1px -1px 1px 0px rgba(0, 0, 0, 0.2), -1px 1px 1px 0px rgba(0, 0, 0, 0.2);
 }
 
+.search-button {
+  width: 100px;
+  height: 39px;
+  text-decoration: none;
+  border-radius: 20px;
+  color: $my-perry-dark;
+  font-weight: lighter;
+  // border: 1px solid black;
+  border: none;
+  background: $my-perrywinkle;
+  padding: 5px 20px 5px 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  white-space:nowrap;
+}
+
+.search-input {
+  border-radius: 20px;
+  border: 1px solid $my-perry-dark;
+  background-color: $my-perry-light;
+  padding-left: 10px;
+}
+
 .buddy-button{
   width: 100px;
   height: 39px;
   text-decoration: none;
   border-radius: 20px;
-  color: black;
+  color: $my-perry-dark;
   font-weight: lighter;
   // border: 1px solid black;
   background: $my-perrywinkle;

@@ -1,7 +1,7 @@
 class LocationsController < ApplicationController
   def index
     if params[:query].present?
-      @locations = Location.where("address LIKE ?", "%#{params[:query]}%")
+      @locations = Location.where("category LIKE ?", "%#{params[:query]}%")
     else
       @locations = Location.all
     end

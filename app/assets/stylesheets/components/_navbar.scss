@@ -2,6 +2,7 @@
   justify-content: space-between;
   background: #575766;
   flex-grow: 0;
+  position: fixed;
 }
 
 .navbar-lewagon .navbar-brand img {
@@ -16,7 +17,7 @@
 }
 
 .nav-logo {
-  color: white;
+  color: rgba(196, 197, 230, 1);
   font-weight: lighter;
   display: flex;
   justify-content: center;
@@ -24,4 +25,8 @@
 
 .navbar-brand {
   margin-right:none !important;
+}
+
+.fa-solid {
+  font-size: xx-large;
 }

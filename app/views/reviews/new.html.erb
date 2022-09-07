@@ -6,7 +6,17 @@
       <div class="bg-white rounded p-3 shadow">
         <h1>New Review</h1>
         <h2><%= @buddy.receiver.name || @buddy.receiver.email %></h2>
-          <%= simple_form_for(@review, method: :post, url: buddy_reviews_path(@buddy)) do |f| %>
+          <%= simple_form_for [@buddy, @review] do |f| %>
+           <p>
+             <%= f.label :rating, 'Rate your Buddy', class: 'raiting' %>
+             <div class= "rating">
+               1 <%= f.radio_button :rating, '1' %>
+               2 <%= f.radio_button :rating, '2' %>
+               3 <%= f.radio_button :rating, '3' %>
+               4 <%= f.radio_button :rating, '4' %>
+               5 <%= f.radio_button :rating, '5' %>
+             </div>
+           </p>
 
          <%#= simple_form_for :url => profile_reviews_path(current_user), :method => :post do |f| %>
           <%= f.input :content %>

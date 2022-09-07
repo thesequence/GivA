@@ -1,9 +1,10 @@
 class ReviewsController < ApplicationController
   def new
+    # @user = User.find(params[:buddy_id])
     @buddy = Buddy.find(params[:buddy_id])
     @review = Review.new
-    @review.buddy = @buddy
-    @review.user = current_user
+    # @review.buddy = @buddy
+    # @review.user = current_user
   end
 
   def create
@@ -11,7 +12,7 @@ class ReviewsController < ApplicationController
     @review.buddy = Buddy.find(params[:buddy_id])
     @review.user = current_user
     if @review.save
-      redirect_to buddy_path(@review.buddy)
+      redirect_to buddies_path
     else
       render :new, status: :unprocessable_entity
     end

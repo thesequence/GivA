@@ -92,7 +92,7 @@
                   <% else %>
                     <%= link_to "Chat", chats_path(profile_id: profile.id), data: {turbo_method: :post}, class:"chat-button" %>
                   <% end %>
-                  <a class="buddy-button" href="">Buddy Up</a>
+                  <%= link_to "Buddy Up", profile_buddies_path(profile_id: profile.id), data: {turbo_method: :post}, class:"buddy-button" %>
                 </div>
 
               </div>

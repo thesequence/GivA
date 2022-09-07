@@ -2,11 +2,13 @@ class ProfilesController < ApplicationController
   def index
     sleep 3
     @profiles = User.all
-    if params[:query].present?
-      @profiles = User.joins(:tags).where("tags.title ILIKE ?", "%#{params[:query]}%")
-      # @tags = Tag.where("address LIKE ?", "%#{params[:query]}%")
+
+    if current_user.displaced
+      @profiles = User.where(displaced: false)
+    elsif current_user.displaced == false
+      @profiles = User.where(displaced: true)
     else
-      # @tags = Tag.all
+
       @profiles = User.all
     end
   end

@@ -1,6 +1,21 @@
 class BuddiesController < ApplicationController
   def index
-    @buddies = Buddy.all
+    @buddies = Buddy.where(asker_id: current_user.id).or(Buddy.where(receiver_id: current_user.id))
+    @users_ids = []
+    @buddies.each do |buddy|
+      if buddy.asker_id == current_user.id
+        bud = buddy.receiver_id
+      else
+        bud = buddy.asker_id
+      end
+      @users_ids << bud
+    end
+    @users = []
+    @users_ids.each do |id|
+      user = User.find(id)
+      @users << user
+    end
+    @users
   end
 
   def show
@@ -18,7 +33,7 @@ class BuddiesController < ApplicationController
     @buddy.asker = current_user
     @buddy.status = "pending"
     if @buddy.save!
-      redirect_to my_buddies_path
+      redirect_to buddies_path
     else
       render new, notice: 'Buddy not created'
     end

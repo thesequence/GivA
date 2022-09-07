@@ -1,1 +1,28 @@
-<h1>This is our index page</h1>
+<% @chats.each do |chat| %>
+  <div>
+    <% if chat.user_a == current_user %>
+      <% if chat.user_b.photo.attached? %>
+        <%= cl_image_tag chat.user_b.photo.key, class: "chatindex-avatar" %>
+      <% end %>
+      <h1 class="chatindex-avatar-name"><%=chat.user_b.name%><h1>
+    <% else %>
+      <% if chat.user_a.photo.attached? %>
+        <%= cl_image_tag chat.user_a.photo.key, class: "chatindex-avatar" %>
+      <% end %>
+      <h1 class="chatindex-avatar-name"><%=chat.user_a.name%><h1>
+    <% end %>
+  </div>
+  <div>
+    <% if chat.user_a == current_user %>
+      <% if chat.user_b.photo.attached? %>
+        <%= cl_image_tag chat.user_b.photo.key, class: "chatindex-avatar" %>
+      <% end %>
+      <h1 class="chatindex-avatar-name"><%=chat.user_b.name%><h1>
+    <% else %>
+      <% if chat.user_a.photo.attached? %>
+        <%= cl_image_tag chat.user_a.photo.key, class: "chatindex-avatar" %>
+      <% end %>
+      <h1 class="chatindex-avatar-name"><%=chat.user_a.name%><h1>
+    <% end %>
+  </div>
+<% end %>

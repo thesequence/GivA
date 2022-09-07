@@ -20,7 +20,12 @@ Location.delete_all
 
 puts "seeding database"
 
-titles = %w[accomodation paperwork language job doctor kindergarden school police Ausländerbehörde visa immigration insurance]
+def random_user_gen(array)
+  rand = rand(0..array.length - 1)
+  array[rand]
+end
+
+titles = %w[accommodation paperwork language job doctor kindergarden school police Ausländerbehörde visa immigration insurance]
 # titles.each do |title|
 tag = Tag.new(
   title: titles.sample(2)
@@ -78,7 +83,7 @@ puts "created title tags"
     "I have a passion for trading and economics, which led me to work in the financial market. I love the outdoors but also enjoy hearing about the lives of others. I am a vegetarian and am very attentive to the needs of animals.",
     "I am a political refugee from the ME. social activist. hope to make this world better. i worked in theater and media and would like to continue this route",
     "I moved here 2 months ago when the war started. I am a parent of 3. we love trips in the woods and playing with our dog. I worked as a cook and had my own restaurant.",
-    "Political refugee from Eastern Europe. just arrived here and need accomodation. I am a student of philosophy, about to major. worked in libraries and at university as TA."
+    "Political refugee from Eastern Europe. just arrived here and need accommodation. I am a student of philosophy, about to major. worked in libraries and at university as TA."
   ]
 
   female_pics = [
@@ -94,11 +99,11 @@ puts "created title tags"
     "https://res.cloudinary.com/dbgvo56a1/image/upload/v1661951077/females/65_ozf3z6.jpg"
   ]
 
-  flags = %w[English Ukrainian German Arabic Vietnamese Turkish French]
+  flags = %w[🇸🇾 🇺🇦 🇦🇫 🇸🇸 🇩🇪 🇩🇪 🇩🇪 🇩🇪 🇩🇪 🇩🇪 🇩🇪 🇩🇪 🇬🇧 🇹🇷 🇫🇷 🇧🇪 🇨🇭 🇦🇹 🇪🇸 🇵🇹 🇻🇳]
   user = User.new(
 
     # each user is assigned an id from 1-10
-    name: Faker::Name.female_first_name,
+    name: Faker::Name.female_first_name + random_user_gen(flags),
     email: "test#{id}@giva.com",
 
     # issue each user the same password
@@ -140,7 +145,7 @@ puts "created #{User.count}female users"
     "I have a passion for trading and economics, which led me to work in the financial market. I love the outdoors but also enjoy hearing about the lives of others. I am a vegetarian and am very attentive to the needs of animals.",
     "I am a political refugee from the ME. social activist. hope to make this world better. i worked in theater and media and would like to continue this route",
     "I moved here 2 months ago when the war started. I am a parent of 3. we love trips in the woods and playing with our dog. I worked as a cook and had my own restaurant.",
-    "Political refugee from Eastern Europe. just arrived here and need accomodation. I am a student of philosophy, about to major. worked in libraries and at university as TA."
+    "Political refugee from Eastern Europe. just arrived here and need accommodation. I am a student of philosophy, about to major. worked in libraries and at university as TA."
   ]
   male_pics = [
     "https://res.cloudinary.com/dbgvo56a1/image/upload/v1661951109/males/87_hnlmur.jpg",
@@ -155,10 +160,11 @@ puts "created #{User.count}female users"
     "https://res.cloudinary.com/dbgvo56a1/image/upload/v1661951109/males/46_fnhty3.jpg"
   ]
 
+  flags = %w[🇸🇾 🇺🇦 🇦🇫 🇸🇸 🇩🇪 🇩🇪 🇩🇪 🇩🇪 🇩🇪 🇩🇪 🇩🇪 🇩🇪 🇬🇧 🇹🇷 🇫🇷 🇧🇪 🇨🇭 🇦🇹 🇪🇸 🇵🇹 🇻🇳]
   user = User.new(
 
     # each user is assigned an id from 10-20
-    name: Faker::Name.male_first_name,
+    name: Faker::Name.male_first_name + random_user_gen(flags),
     email: "test#{id}@giva.com",
     # issue each user the same password
     password: "password",
@@ -188,7 +194,7 @@ puts "created #{User.count} male users"
 
 User.all.map do |user|
   problem_array = [
-    "need accomodation. 3 kids",
+    "need accommodation. 3 kids",
     "pls help me with finding a job",
     "need help with Ausländerbehörde",
     "need a place to stay for me and my wife",
@@ -196,12 +202,12 @@ User.all.map do |user|
     "medical treatment dialisis",
     "help with immigration papers",
     "need a job",
-    "accomodation. family of 3",
+    "accommodation. family of 3",
     "need help with German immigration"
   ]
 
   solution_array = [
-    "I can offer accomodation for 2",
+    "I can offer accommodation for 2",
     "good connections with Ausländerbehörde",
     "can help with babysitting",
     "job offer in gastronomy",
@@ -358,10 +364,7 @@ puts "created locations"
 # Select all users from DB
 # Split users into two array through PARTITION
 # Create a Random number generator by counting an array.
-def random_user_gen(array)
-  rand = rand(0..array.length - 1)
-  array[rand]
-end
+
 
 users = User.all
 users_partition = users.partition { |user| user.displaced }

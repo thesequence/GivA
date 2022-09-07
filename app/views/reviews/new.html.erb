@@ -6,7 +6,7 @@
       <div class="bg-white rounded p-3 shadow">
         <h1>New Review</h1>
         <h2><%= @buddy.receiver.name || @buddy.receiver.email %></h2>
-          <%= simple_form_for(@review, method: :post, url: buddy_reviews_path(@buddy)) do |f| %>
+          <%= simple_form_for [@buddy, @review] do |f| %>
            <p>
              <%= f.label :rating, 'Rate your Buddy', class: 'raiting' %>
              <div class= "rating">

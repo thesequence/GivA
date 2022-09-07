@@ -43,9 +43,12 @@
                 </div>
 
 
-                <div class="tag-wrapper">
-                  <% profile.tags.each do |tag| %>
-                    <span class="tag"><%= tag.title %></span>
+                <div class="tag-wrapper" style="flex-direction: column;">
+                <h6>Tags</h6>
+                  <% profile.tags.each do |dbTag| %>
+
+                      <p><%= dbTag.title %></p>
+
                   <% end %>
                 </div>
 

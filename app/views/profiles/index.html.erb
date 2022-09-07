@@ -4,7 +4,7 @@
     <%= text_field_tag :query,
       params[:query],
       class: "form-control",
-      placeholder: "Search what are you looking for help"
+      placeholder: "Search for what you need help with"
     %>
     <%= submit_tag "Search", class: "btn btn-primary" %>
   <% end %>
@@ -49,14 +49,14 @@
 
                 </div>
 
-
-                <div class="tag-wrapper" style="flex-direction: column;">
-                  <h6>Tags</h6>
-                  <% profile.user_tags.each do |dbTag| %>
-                      <p><%= Tag.find(dbTag.tag_id).title %></p>
-                  <% end %>
+                <div class="hand-wrapper">
+                <div class="hand">Tags</div>
+                  <div class="tag-wrapper">
+                    <% profile.user_tags.each do |dbTag| %>
+                        <span class="tag"><%= Tag.find(dbTag.tag_id).title %></span>
+                    <% end %>
+                  </div>
                 </div>
-
               </div>
 
               <div class="arrow-right">

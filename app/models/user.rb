@@ -12,6 +12,7 @@ class User < ApplicationRecord
 
   has_one_attached :photo
   has_many :user_tags
+  has_many :reviews
   has_many :tags, through: :user_tags
 
   # :user_tags, :buddys,:language_tags

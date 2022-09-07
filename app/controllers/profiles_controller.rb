@@ -3,14 +3,25 @@ class ProfilesController < ApplicationController
     sleep 3
     @profiles = User.all
 
-    if current_user.displaced
-      @profiles = User.where(displaced: false)
-    elsif current_user.displaced == false
-      @profiles = User.where(displaced: true)
-    else
+    if params[:query].present?
 
-      @profiles = User.all
-    end
+      if current_user.displaced
+              @profiles = User.joins(:tags).where("tags.title ILIKE ? AND user.displaced ILIKE ? ", "%#{params[:query]}%", false)
+      elsif current_user.displaced == false
+              @profiles = User.joins(:tags).where("tags.title ILIKE ? AND user.displaced ILIKE ? ", "%#{params[:query]}%", true)
+      else
+        @profiles = User.all
+      end
+     else
+       if current_user.displaced
+                @profiles = User.joins(:tags).where("tags.title ILIKE ?", "%#{params[:query]}%")
+        elsif current_user.displaced == false
+                @profiles = User.joins(:tags).where("tags.title ILIKE ?", "%#{params[:query]}%")
+        else
+          @profiles = User.all
+        end
+      end
+     
   end
 
   def show

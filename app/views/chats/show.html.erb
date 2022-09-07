@@ -1,8 +1,7 @@
-<div class="container chat"
+<div class="container-chat"
   data-controller="chat"
   data-chat-chat-id-value="<%= @chat.id %>"
 >
-  <h1>#<%= @chat.name %></h1>
 
   <div class="messages" data-chat-target="messages">
     <% @chat.messages.each do |message| %>
@@ -10,14 +9,18 @@
     <% end %>
   </div>
 
+
+<div class="chataction">
   <%= simple_form_for [@chat, @message],
   html: { data: { action: "turbo:submit-end->chat#resetForm" }, class: "d-flex" } do |f|
   %>
     <%= f.input :content,
       label: false,
       placeholder: "Message ##{@chat.name}",
-      wrapper_html: {class: "flex-grow-1"}
+      wrapper_html: {class: "flex-grow-1 rounded-20px chatEl"}
+
     %>
-    <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+    <%= f.submit "Send", class: "mb-3 p-2 send-minty" %>
   <% end %>
+  </div>
 </div>

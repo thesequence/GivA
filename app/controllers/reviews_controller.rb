@@ -9,8 +9,14 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    @review.buddy = Buddy.find(params[:buddy_id])
-    @review.user = current_user
+    @buddy = Buddy.find(params[:buddy_id])
+    @review.buddy = @buddy
+    if @buddy.asker_id == current_user.id
+      @review.user = User.find(@buddy.receiver_id)
+    else
+      @review.user = User.find(@buddy.asker_id)
+    end
+
     if @review.save
       redirect_to buddies_path
     else

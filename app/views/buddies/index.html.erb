@@ -83,6 +83,16 @@
                   </div>
                 </div>
 
+                <div class="review-wrapper">
+                  <div class="my-review">Review</div>
+                  <div class="review">
+                     <% profile.reviews.each do |review| %>
+                      <%= review.content %>
+                    <% end %>
+
+                  </div>
+                </div>
+
                 <div class="button-wrapper">
                   <% chat = Chat.where(user_a_id: current_user.id, user_b_id: profile.id) || Chat.where(user_a_id: profile.id, user_b_id: current_user.id) %>
                   <% unless chat.empty? %>
@@ -90,7 +100,7 @@
                   <% else %>
                     <%= link_to "Chat", chats_path(profile_id: profile.id), data: {turbo_method: :post}, class:"chat-button" %>
                   <% end %>
-                  <% buddies = Buddy.where(asker_id: current_user.id, receiver_id: profile.id) || Buddy.where(asker_id: profile.id, receiver_id: current_user.id) %>
+                <% buddies = Buddy.where(asker_id: current_user.id, receiver_id: profile.id) || Buddy.where(asker_id: profile.id, receiver_id: current_user.id) %>
 
                   <%= link_to "Review", new_buddy_review_path(buddies.first.id), class:"buddy-button"  %>
                 </div>

@@ -1,6 +1,7 @@
 class ChatsController < ApplicationController
   def index
-    @chats = Chat.all
+  
+    @chats = Chat.where(user_a:current_user).or(Chat.where(user_b:current_user))
   end
 
   def show

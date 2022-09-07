@@ -13,6 +13,10 @@
   background: #575766;
   /* Dark Periwinkle */
   background: #575766;
+
+  i {
+    color: white;
+  }
 }
 
 
@@ -23,7 +27,12 @@
   min-height: 100vh;
 }
 
-.back-active{
+.back-active {
+  color: rgba(184, 230, 199, 1);
+  font-size: xx-large;
+}
+
+.back-active  i {
   color: rgba(184, 230, 199, 1);
   font-size: xx-large;
 }

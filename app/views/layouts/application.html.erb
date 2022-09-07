@@ -15,8 +15,13 @@
 
   </head>
 
-  <body class="d-flex flex-column" style="height: 100vh;">
+
+  <body class="" style="height: 100vh;">
+    <% if params[:controller] == 'chats' && params[:action] == 'show' %>
+         <%= render "shared/chatbar", chat: @chat %>
+    <% else %>
       <%= render "shared/navbar" unless @disable_nav %>
+    <% end %>
     <div class="overflow-scroll" style="height: 90vh;">
       <%= yield %>
     </div>

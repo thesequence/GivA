@@ -15,12 +15,12 @@
 
   </head>
 
-  <body>
-    <div class="wrapper custom-mobile-layout">
+  <body class="d-flex flex-column" style="height: 100vh;">
       <%= render "shared/navbar" unless @disable_nav %>
+    <div class="overflow-scroll" style="height: 90vh;">
       <%= yield %>
-      <%= render "shared/tabbar" unless @disable_nav %>
     </div>
     <%= render "shared/flashes" %>
+    <%= render "shared/tabbar" unless @disable_nav %>
   </body>
 </html>

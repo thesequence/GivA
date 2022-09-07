@@ -27,47 +27,48 @@ end
 
 titles = %w[accommodation paperwork language job doctor kindergarden school police Ausländerbehörde visa immigration insurance]
 # titles.each do |title|
-tag = Tag.new(
-  title: titles.sample(2)
+tag1 = Tag.new(
+  title: titles[0]
 )
-tag.save!
-tag = Tag.new(
-  title: titles.sample(4)
+tag1.save!
+tag2 = Tag.new(
+  title: titles[1]
 )
-tag.save!
-tag = Tag.new(
-  title: titles.sample(3)
+tag2.save!
+tag3 = Tag.new(
+  title: titles[2]
 )
-tag.save!
-tag = Tag.new(
-  title: titles.sample(3)
+tag3.save!
+tag4 = Tag.new(
+  title: titles[3]
 )
-tag.save!
-tag = Tag.new(
-  title: titles.sample(3)
+tag4.save!
+tag5 = Tag.new(
+  title: titles[4]
 )
-tag.save!
-tag = Tag.new(
-  title: titles.sample(3)
+tag5.save!
+tag6 = Tag.new(
+  title: titles[5]
 )
-tag.save!
-tag = Tag.new(
-  title: titles.sample(3)
+tag6.save!
+tag7 = Tag.new(
+  title: titles[6]
 )
-tag.save!
-tag = Tag.new(
-  title: titles.sample(3)
+tag7.save!
+tag8 = Tag.new(
+  title: titles[7]
 )
-tag.save!
-tag = Tag.new(
-  title: titles.sample(3)
+tag8.save!
+tag9 = Tag.new(
+  title: titles[8]
 )
-tag.save!
-tag = Tag.new(
-  title: titles.sample(3)
+tag9.save!
+tag10 = Tag.new(
+  title: titles[9]
 )
-tag.save!
+tag10.save!
 # end
+
 puts "created title tags"
 
 
@@ -122,11 +123,25 @@ puts "created title tags"
   user.photo.attach(io: URI.open(female_pics[id - 1]), filename: "fpic#{id}.jpg", content_type: "image/jpg")
   user.save
 
-  user_tag = UserTag.new(
+  user_tag1 = UserTag.new(
     user_id: user.id,
     tag_id: Tag.all.sample.id
   )
-  user_tag.save!
+  user_tag1.save!
+
+
+  user_tag2 = UserTag.new(
+    user_id: user.id,
+    tag_id: Tag.all.sample.id
+  )
+  user_tag2.save!
+
+
+  user_tag3 = UserTag.new(
+    user_id: user.id,
+    tag_id: Tag.all.sample.id
+  )
+  user_tag3.save!
 
 end
 
@@ -183,11 +198,29 @@ puts "created #{User.count}female users"
   user.photo.attach(io: URI.open(male_pics[id - 11]), filename: "mpic#{id}.jpg", content_type: "image/jpg")
   user.save
 
-  user_tag = UserTag.new(
+
+  user_tag1 = UserTag.new(
     user_id: user.id,
     tag_id: Tag.all.sample.id
   )
-  user_tag.save!
+  user_tag1.save!
+
+
+  user_tag2 = UserTag.new(
+    user_id: user.id,
+    tag_id: Tag.all.sample.id
+  )
+  user_tag2.save!
+
+
+  user_tag3 = UserTag.new(
+    user_id: user.id,
+    tag_id: Tag.all.sample.id
+  )
+  user_tag3.save!
+
+
+
 end
 
 puts "created #{User.count} male users"

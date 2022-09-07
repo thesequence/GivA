@@ -18,14 +18,14 @@
               <div class="content-wrapper-front">
 
                 <div class="avatar-wrapper">
-                <%= link_to profile_path(profile) do %>
-                <% if profile.displaced %>
-                  <%= cl_image_tag profile.photo.key, class:"avatar" %>
-                <% else %>
-                  <%= cl_image_tag profile.photo.key, class:"avatar" %>
-                <% end %>
-                  <h1 class="avatar-name"><%=profile.name%><h1>
-                <% end %>
+                  <%= link_to profile_path(profile) do %>
+                  <% if profile.displaced %>
+                    <%= cl_image_tag profile.photo.key, class:"avatar" %>
+                  <% else %>
+                    <%= cl_image_tag profile.photo.key, class:"avatar" %>
+                  <% end %>
+                    <h1 class="avatar-name"><%=profile.name%><h1>
+                  <% end %>
                 </div>
 
                 <div class="hand-wrapper">
@@ -45,13 +45,13 @@
                 </div>
 
 
-                <div class="tag-wrapper" style="flex-direction: column;">
-                <h6>Tags</h6>
-                  <% profile.tags.each do |dbTag| %>
-
-                      <p><%= dbTag.title %></p>
-
-                  <% end %>
+                <div class="hand-wrapper">
+                <div class="hand">Tags</div>
+                  <div class="tag-wrapper">
+                    <% profile.user_tags.each do |dbTag| %>
+                        <span class="tag"><%= Tag.find(dbTag.tag_id).title %></span>
+                    <% end %>
+                  </div>
                 </div>
 
               </div>
@@ -102,8 +102,7 @@
                   <% end %>
                 <% buddies = Buddy.where(asker_id: current_user.id, receiver_id: profile.id) || Buddy.where(asker_id: profile.id, receiver_id: current_user.id) %>
 
-                    <%= link_to "Review", new_buddy_review_path(buddies.first.id), class:"chat-button"  %>
-
+                  <%= link_to "Review", new_buddy_review_path(buddies.first.id), class:"buddy-button"  %>
                 </div>
 
               </div>
@@ -116,7 +115,6 @@
           </div>
 
       </div>
-
-  <% end %>
-
     </div>
+  <% end %>
+</div>

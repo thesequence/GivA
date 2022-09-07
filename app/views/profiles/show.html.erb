@@ -1,15 +1,61 @@
-<h1>show might not need</h1>
-<div class = "card">
-  <div class ="avatar-info">
-    <%= cl_image_tag profile.photo.key %>
-    <h4><%=profile.name%><h4>
-    <p> X X X X </p>
-  </div>
-  <div class ="bio-tags-btn">
-    <p> bio-expandable</p>
-    <div class ="tags">
-      tag tag tag tag
-    </div>
-    <a href="">chat</a>
-  </div>
-</div>
+
+<%# basically a card on one page (front+back combined + reviews) %>
+
+
+      <div class="wrapper-div-show">
+
+        <div class="content-wrapper-front-show">
+
+          <div class="avatar-wrapper">
+            <% if @profile.displaced %>
+              <%= cl_image_tag @profile.photo.key, class:"avatar" %>
+            <% else %>
+              <%= cl_image_tag @profile.photo.key, class:"avatar" %>
+            <% end %>
+              <h1><%=@profile.name%><h1>
+          </div>
+
+          <div class="hand-wrapper-show">
+
+            <% if @profile.displaced %>
+              <div class="hand">Need a hand with</div>
+              <div class="hand-content">
+                <%= @profile.problem %>
+              </div>
+            <% else %>
+              <div class="hand">Give a hand with</div>
+              <div class="hand-content">
+                <%= @profile.problem %>
+              </div>
+            <% end %>
+
+          </div>
+
+          <div class="bio-wrapper">
+            <div class="my-bio">About me</div>
+              <div class="bio-show">
+                <%= @profile.bio %>
+              </div>
+          </div>
+
+          <div class="tag-wrapper">
+            <% @profile.tags.each do |tag| %>
+              <span class="tag"><%= tag.title %></span>
+            <% end %>
+          </div>
+
+          
+
+          <div class="button-wrapper">
+            <% chat = Chat.where(user_a_id: current_user.id, user_b_id: @profile.id) || Chat.where(user_a_id: @profile.id, user_b_id: current_user.id) %>
+            <% unless chat.empty? %>
+              <%= link_to "Chat", chat_path(chat[0].id), data: {turbo_method: :get}, class:"chat-button" %>
+            <% else %>
+              <%= link_to "Chat", chats_path(profile_id: @profile.id), data: {turbo_method: :post}, class:"chat-button" %>
+            <% end %>
+            <a class="buddy-button" href="">Buddy Up</a>
+          </div>
+
+        </div>
+
+      </div>

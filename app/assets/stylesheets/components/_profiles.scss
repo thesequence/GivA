@@ -20,9 +20,9 @@
   transform-origin: center right;
   transition: transform 1s;
   //  box-shadow: 1px -1px 4px 1px rgb(255, 255, 255), -1px 1px 4px 1px rgb(255, 255, 255);
-  // border: 1px;
-  // border-style: solid;
-  // border-color: $my-perry-dark;
+  border: 1px;
+  border-style: solid;
+  border-color: $my-perrywinkle;
   border-radius: 20px;
   font-family: "Raleway";
   background-color: white;
@@ -53,6 +53,10 @@
 
 .container-giva {
   background-color: $my-perry-light;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 
@@ -61,6 +65,12 @@
   width: 100px;
   height: 100px;
   border-radius: 50px;
+
+}
+
+.avatar-name{
+  text-decoration: none !important;
+
 }
 
 /* set wrapper divs  (front & back) */
@@ -119,6 +129,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 5px;
+
 }
 
 .hand-wrapper{
@@ -171,7 +182,7 @@
 }
 
 .my-bio{
-  color: $my-perry-light;
+  color: $my-perrywinkle;
 }
 
 .button-wrapper{
@@ -206,7 +217,7 @@
   color: black;
   font-weight: lighter;
   // border: 1px solid black;
-  background: $my-perry-light;
+  background: $my-perrywinkle;
   padding: 5px 20px 5px 20px;
   display: flex;
   flex-direction: row;
@@ -220,4 +231,37 @@
   display: flex;
   align-items: center;
   padding-left: 4px;
+}
+
+// styling for show page
+
+.wrapper-div-show{
+  display:flex;
+  justify-content: space-evenly;
+  height: fit-content;
+  border: 1px solid $my-perrywinkle;
+  border-radius: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.bio-show{
+  padding: 2px;
+}
+
+.hand-wrapper-show{
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.content-wrapper-front-show{
+  display: flex;
+  flex-direction: column;
+/*  TO-DO: choose if to use  */
+  justify-content: space-around;
+  text-align :center;
+  height: 70vh;
+
 }

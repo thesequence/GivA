@@ -21,22 +21,49 @@ Location.delete_all
 puts "seeding database"
 
 titles = %w[accomodation paperwork language job doctor kindergarden school police Ausländerbehörde visa immigration insurance]
-languages = %w[English Ukrainian German Arabic Vietnamese Turkish French]
-titles.each do |title|
-  tag = Tag.new(
-    title: title
-  )
-  tag.save!
-end
+# titles.each do |title|
+tag = Tag.new(
+  title: titles.sample(2)
+)
+tag.save!
+tag = Tag.new(
+  title: titles.sample(4)
+)
+tag.save!
+tag = Tag.new(
+  title: titles.sample(3)
+)
+tag.save!
+tag = Tag.new(
+  title: titles.sample(3)
+)
+tag.save!
+tag = Tag.new(
+  title: titles.sample(3)
+)
+tag.save!
+tag = Tag.new(
+  title: titles.sample(3)
+)
+tag.save!
+tag = Tag.new(
+  title: titles.sample(3)
+)
+tag.save!
+tag = Tag.new(
+  title: titles.sample(3)
+)
+tag.save!
+tag = Tag.new(
+  title: titles.sample(3)
+)
+tag.save!
+tag = Tag.new(
+  title: titles.sample(3)
+)
+tag.save!
+# end
 puts "created title tags"
-
-languages.each do |language|
-  tag = Tag.new(
-    title: language
-  )
-  tag.save!
-end
-puts "created language tags"
 
 
 # generate 10 female users
@@ -67,6 +94,7 @@ puts "created language tags"
     "https://res.cloudinary.com/dbgvo56a1/image/upload/v1661951077/females/65_ozf3z6.jpg"
   ]
 
+  flags = %w[English Ukrainian German Arabic Vietnamese Turkish French]
   user = User.new(
 
     # each user is assigned an id from 1-10

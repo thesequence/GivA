@@ -1,4 +1,4 @@
-.container-chat {
+.chatroom {
   background: white;
   margin-top: 9px;
   height: calc(100vh - 75px);
@@ -86,4 +86,28 @@
   overflow: hidden;
   border: none;
   width: 100%;
+}
+
+// To style the wrapping div
+.message-row {
+  margin-bottom: 10px;
+  padding: 8px;
+}
+
+// To style the message itself
+.sender-style, .receiver-style {
+  width: 70%;
+  max-width: 400px;
+  border-radius: 20px;
+  padding: 8px;
+  min-height: 80px;
+}
+
+.sender-style {
+  background-color: rgba(196, 197, 230, 1)
+  ;
+}
+
+.receiver-style {
+  background-color: rgba(184, 230, 199, 1);
 }

@@ -151,12 +151,12 @@ puts "created #{User.count}female users"
 
 (11..20).each do |id|
   bio_array = [
-    "I am a refugee from Syria and I have been living in the camp for four years. I need help with school for my children and a place to stay.",
+    "I am from Syria and I have been living in the camp for four years. I need help with school for my children and a place to stay.",
     "I am a parent, I work in IT, I have experience in gastronomy, I live with my family in the countryside, I love to travel and read books and eat food.",
-    "I am a refugee who arrived in Germany in 2022. I have been working since then for restaurants and event industry. I am the parent of four kids and I love cars, nature trips and anything that makes my life more interesting.",
-    "I am a refugee from Syria. I have been in Germany for two years now and have been working in the movie industry. I live with my two dogs and would love to meet new people.",
-    "I am a parent, refugee from Ukraine. I am passionate about nature, my family and Sunday movies. I am not a stranger to the hardships of life. I am here to give my best and try to find peace in this world.",
-    "I am a refugee from Ukraine and have been living in Germany for two years. I am working as an economist and enjoy spending my free time with my pets.",
+    "I arrived in Germany in 2022. I have been working since then for restaurants and event industry. I am the parent of four kids and I love cars, nature trips and anything that makes my life more interesting.",
+    "I am from Syria. I have been in Germany for two years now and have been working in the movie industry. I live with my two dogs and would love to meet new people.",
+    "I am a parent and from Ukraine. I am passionate about nature, my family and Sunday movies. I am not a stranger to the hardships of life. I am here to give my best and try to find peace in this world.",
+    "I am from Ukraine and have been living in Germany for two years. I am working as an economist and enjoy spending my free time with my pets.",
     "I have a passion for trading and economics, which led me to work in the financial market. I love the outdoors but also enjoy hearing about the lives of others. I am a vegetarian and am very attentive to the needs of animals.",
     "I am a political refugee from the ME. social activist. hope to make this world better. i worked in theater and media and would like to continue this route",
     "I moved here 2 months ago when the war started. I am a parent of 3. we love trips in the woods and playing with our dog. I worked as a cook and had my own restaurant.",

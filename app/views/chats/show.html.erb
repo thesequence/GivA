@@ -1,11 +1,17 @@
-<div class="container-chat"
+<div class="container chatroom"
   data-controller="chat"
   data-chat-chat-id-value="<%= @chat.id %>"
->
+  data-chat-current-user-id-value="<%= current_user.id %>">
+
+
 
   <div class="messages" data-chat-target="messages">
     <% @chat.messages.each do |message| %>
-      <%= render "messages/message", message: message %>
+    <div class="message-row d-flex <%= message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>">
+      <div class="<%= message.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
+        <%= render "messages/message", message: message %>
+      </div>
+    </div>
     <% end %>
   </div>
 
@@ -16,7 +22,7 @@
   %>
     <%= f.input :content,
       label: false,
-      placeholder: "Message ##{@chat.name}",
+      # placeholder: "Message ##{@chat.name}",
       wrapper_html: {class: "flex-grow-1 rounded-20px chatEl"}
 
     %>

@@ -44,6 +44,22 @@
             <% end %>
           </div>
 
+          <% unless @profile.reviews.empty? %>
+                  <div class="hand-wrapper">
+                    <div class="hand">Feedback of <%=@profile.name%></div>
+                      <div class="review">
+                          <% @profile.reviews.each do |review| %>
+                            <div class="reviews">
+                            <%= ["😖","😕","🙂","😊","🥰"][(review.rating - 1)] if review.rating %> <%= review.content %>
+                            <%=%>
+                            </div>
+                          <% end %>
+                    </div>
+                  </div>
+                  <% else %>
+                  <div class="hand">No feedback of <%=@profile.name%> yet</div>
+                  <% end %>
+
 
 
           <div class="button-wrapper">

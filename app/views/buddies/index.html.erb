@@ -6,7 +6,7 @@
 
     <div class="scene scene--card-giva mt-3">
 
-      <div class="card-buddy">
+      <div class="card-giva">
 
           <div class="card__face card__face--front">
 
@@ -83,24 +83,23 @@
                   </div>
                 </div>
 
-                <% unless profile.reviews.empty? %>
-                  <div class="hand-wrapper">
-                    <div class="hand">Feedback of <%=profile.name%></div>
-                      <div class="review">
-                          <% profile.reviews.each do |review| %>
-                            <div class="reviews">
-                            <%= ["😖","😕","🙂","😊","🥰"][(review.rating - 1)] if review.rating %> <%= review.content %>
-                            <%=%>
-                            </div>
-                          <% end %>
-                    </div>
+                <div class="hand-wrapper">
+                <% if profile.reviews.count == 0 %>
+                <div class="hand">No feedback of <%=profile.name%> yet</div>
+                <% else %>
+                  <div class="hand">Feedback of <%=profile.name%></div>
+                <% end %>
+                    <div class="review">
+                        <% profile.reviews.each do |review| %>
+                          <div class="reviews">
+                          <%= ["😖","😕","🙂","😊","🥰"][(review.rating - 1)] if review.rating %> <%= review.content %>
+                          <%=%>
+                          </div>
+                        <% end %>
+
+
                   </div>
-                  <% else %>
-                  <div class="hand">No feedback of <%=profile.name%> yet</div>
-                  <% end %>
-
-
-                  
+                </div>
 
                 <div class="button-wrapper">
 

@@ -2,7 +2,7 @@
   <%= form_with url: locations_path, method: :get, class: "d-flex search-bar justify-content-between m-3" do %>
     <%= text_field_tag :query,
       params[:query],
-      class: " w-100 flex-grow-1 search-input",
+      class: "w-100 flex-grow-1 search-input",
       placeholder: "Find a location"
     %>
     <%= submit_tag "Search", class: "search-button" %>

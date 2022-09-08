@@ -12,7 +12,8 @@
     <% end %>
 
   <div>
-    <%= link_to profile_path do %>
+    <% chat_partner = chat.user_a == current_user ? chat.user_b : chat.user_a %>
+    <%= link_to profile_path(chat_partner) do %>
       <% if chat.user_a == current_user %>
         <%= cl_image_tag chat.user_b.photo.key, class:"chat-avatar" %>
       <% else %>

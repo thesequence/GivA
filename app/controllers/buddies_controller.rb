@@ -28,10 +28,7 @@ class BuddiesController < ApplicationController
 
   def create
     @local_person = User.find(params[:profile_id])
-    @buddies = Buddy.where(asker_id: current_user.id, receiver_id: @local_person.id).or(Buddy.where(asker_id: @local_person.id, receiver_id: current_user.id))
-    if @buddies.first.nil?
-      redirect_to buddies_path
-    else
+
       @buddy = Buddy.new
       @buddy.receiver = @local_person
       @buddy.asker = current_user
@@ -41,6 +38,6 @@ class BuddiesController < ApplicationController
       else
         render new, notice: 'Buddy not created'
       end
-    end
+
   end
 end

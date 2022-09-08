@@ -24,6 +24,11 @@
     overflow: scroll;
     padding: 1rem;
     margin: auto;
+
+    border-style: solid;
+    border: 1px;
+    border-color: $my-perrywinkle;
+    border-radius: 20px;
   }
 
   .chataction {

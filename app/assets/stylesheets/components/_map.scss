@@ -6,3 +6,21 @@
   text-align: center;
   font-family: "Open Sans", sans-serif;
 }
+
+.search-bar {
+  border-radius: 20px;
+  border: 1px solid $my-perry-dark;
+  background-color: $my-perry-light;
+  padding-left: 10px;
+}
+
+.search-bar .search-input {
+  background-color: none;
+  border: none !important;
+}
+
+.search-bar .search-input:focus {
+  background-color: none !important;
+  border: none !important;
+  outline: none;
+}

@@ -1,6 +1,6 @@
 .chatbar-giva {
 
-  background: rgba(196, 197, 230, 1);
+
   // flex-grow: 0;
   // position: fixed;
   // width: auto;
@@ -8,23 +8,15 @@
 
 
 .chat-container-fluid {
-  background: rgba(196, 197, 230, 1);
+  background: #c4c5e6;
   width: auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
   padding: 10px 16px;
-  margin-left: auto;
-  gap: 99px;
-  justify-content: space-between;
-  position: absolute;
-  height: 68px;
+  /* margin-left: auto; */
+  /* gap: 99px; */
+
+  /* position: absolute; */
   /* left: 0px; */
-  top: 0px;
-
-  /* Light Periwinkle */
-
+  /* top: 0px; */
   background: #C4C5E6;
 
   // gap: 8px;
@@ -46,7 +38,6 @@
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
-  display: flex;
   text-align: center;
   letter-spacing: -0.02em;
 

@@ -1,16 +1,17 @@
-<div class="chatbar-giva">
-  <div class="chat-container-fluid w-100">
+<div class="chatbar-giva d-flex justify-content-between align-items-center chat-container-fluid w-100">
+  <div class="">
     <%= link_to chats_path do %>
     <img src="https://res.cloudinary.com/dbgvo56a1/image/upload/v1662557382/arrow-left-white_zkgi5y.svg" alt="">
     <% end %>
-
-  <div>
-    <% if chat.user_a == current_user %>
-      <h1 class="chat-avatar-name"><%=chat.user_b.name%><h1>
-    <% else %>
-      <h1 class="chat-avatar-name"><%=chat.user_a.name%><h1>
-    <% end %>
   </div>
+
+
+    <% if chat.user_a == current_user %>
+      <h1 class="chat-avatar-name pe-3"><%=chat.user_b.name%><h1>
+    <% else %>
+      <h1 class="chat-avatar-name pe-3"><%=chat.user_a.name%><h1>
+    <% end %>
+
 
   <div>
     <% if chat.user_a == current_user %>

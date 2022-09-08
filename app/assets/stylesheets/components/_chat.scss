@@ -13,12 +13,23 @@
     padding: 1rem;
   }
 
+  h3 {
+    font-size: 17px;
+    font-weight: bold;
+  }
+
 
   .messages {
     height: 100%;
     overflow: scroll;
     padding: 1rem;
     margin: auto;
+  }
+
+  .chataction {
+    position: absolute;
+    bottom: 56px;
+    width: 100%;
   }
 
   #new_message {
@@ -75,5 +86,4 @@
   overflow: hidden;
   border: none;
   width: 100%;
-  padding-left: 16px;
 }

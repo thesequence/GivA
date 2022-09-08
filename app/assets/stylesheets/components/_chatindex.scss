@@ -1,35 +1,39 @@
-.chatindex-container-fluid {
-  background: rgba(196, 197, 230, 1);
-  width: auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 16px;
-  margin-left: auto;
-  gap: 16px;
-  justify-content: space-between;
-  position: absolute;
-  height: 68px;
-  white-space: nowrap;
+// .chatindex-container-fluid {
+//   background: #c4c5e6;
+//   width: auto;
+//   display: flex;
+//   /* flex-direction: row; */
+//   justify-content: space-between;
+//   align-items: center;
+//   padding: 10px 16px;
+//   margin-left: auto;
+//   gap: 99px;
+//   justify-content: space-between;
+//   /* position: absolute; */
+//   height: 68px;
+//   /* left: 0px; */
+//   top: 0px;
+//   background: #C4C5E6;
+// }
+
+.green-dot {
+  background-color: $my-mint;
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  align-self: center;
+
 }
 
-  ul {
-    list-style: none;
-  }
-
-  li {
-    list-style: none;
-    display: inline-flex;
-    // float: left;
-
-  }
-
+.chat-time {
+  font-size: 11px;
+  color: $my-perry-dark;
+}
 .chatindex-avatar {
   border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  margin-top: 10px;
+  width: 52px;
+  height: 52px;
+
 }
 
 .chatindex-avatar-name {
@@ -38,6 +42,4 @@
   font-weight: 500;
   font-size: 17px;
   line-height: 20px;
-
-  color: #000000;
 }

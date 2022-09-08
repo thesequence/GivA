@@ -1,28 +1,17 @@
-<% @chats.each do |chat| %>
-  <div>
-    <% if chat.user_a == current_user %>
-      <% if chat.user_b.photo.attached? %>
-        <%= cl_image_tag chat.user_b.photo.key, class: "chatindex-avatar" %>
+<div >
+  <% @chats.each do |chat| %>
+    <div>
+      <% if chat.user_a == current_user %>
+        <% if chat.user_b.photo.attached? class:  %>
+          <%= cl_image_tag chat.user_b.photo.key, class: "chatindex-avatar-b avatar" %>
+        <% end %>
+        <h1 class="chatindex-avatar-b name"><%=chat.user_b.name%><h1>
+      <% else %>
+        <% if chat.user_a.photo.attached? %>
+          <%= cl_image_tag chat.user_a.photo.key, class: "chatindex-avatar-a" %>
+        <% end %>
+        <h1 class="chatindex-avatar-a"><%=chat.user_a.name%><h1>
       <% end %>
-      <h1 class="chatindex-avatar-name"><%=chat.user_b.name%><h1>
-    <% else %>
-      <% if chat.user_a.photo.attached? %>
-        <%= cl_image_tag chat.user_a.photo.key, class: "chatindex-avatar" %>
-      <% end %>
-      <h1 class="chatindex-avatar-name"><%=chat.user_a.name%><h1>
-    <% end %>
-  </div>
-  <div>
-    <% if chat.user_a == current_user %>
-      <% if chat.user_b.photo.attached? %>
-        <%= cl_image_tag chat.user_b.photo.key, class: "chatindex-avatar" %>
-      <% end %>
-      <h1 class="chatindex-avatar-name"><%=chat.user_b.name%><h1>
-    <% else %>
-      <% if chat.user_a.photo.attached? %>
-        <%= cl_image_tag chat.user_a.photo.key, class: "chatindex-avatar" %>
-      <% end %>
-      <h1 class="chatindex-avatar-name"><%=chat.user_a.name%><h1>
-    <% end %>
-  </div>
-<% end %>
+    </div>
+  <% end %>
+</div>

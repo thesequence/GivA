@@ -13,8 +13,8 @@ puts "deleting database"
 
 UserTag.delete_all
 Tag.delete_all
-Buddy.delete_all
 User.delete_all
+Buddy.delete_all
 
 Location.delete_all
 
@@ -199,6 +199,7 @@ puts "created #{User.count}female users"
   user.save
 
 
+
   user_tag1 = UserTag.new(
     user_id: user.id,
     tag_id: Tag.all.sample.id
@@ -224,6 +225,7 @@ puts "created #{User.count}female users"
 end
 
 puts "created #{User.count} male users"
+
 
 User.all.map do |user|
   problem_array = [
@@ -388,27 +390,27 @@ puts "created locations"
 # puts "creating buddies for first and last user"
 
 # Buddy.create(
-#   asker: User.first,
-#   receiver: User.last
-# )
+  #   asker: User.first,
+  #   receiver: User.last
+  # )
 
-# puts "created buddies for first and last user"
+  # puts "created buddies for first and last user"
 
-# Select all users from DB
-# Split users into two array through PARTITION
-# Create a Random number generator by counting an array.
+  # Select all users from DB
+  # Split users into two array through PARTITION
+  # Create a Random number generator by counting an array.
 
 
-users = User.all
-users_partition = users.partition { |user| user.displaced }
-displaced_array = users_partition[0]
-non_displaced_array = users_partition[1]
+  users = User.all
+  users_partition = users.partition { |user| user.displaced }
+  displaced_array = users_partition[0]
+  non_displaced_array = users_partition[1]
 
-displaced_array.each do |displaced|
-  u = random_user_gen(non_displaced_array)
-  buddy = Buddy.new(asker: displaced, receiver: u, status: 0)
-  buddy.save!
-end
+  displaced_array.each do |displaced|
+    u = random_user_gen(non_displaced_array)
+    buddy = Buddy.new(asker: displaced, receiver: u, status: 0)
+    buddy.save!
+  end
 
 puts "created buddies"
 
@@ -427,5 +429,71 @@ puts "created buddies"
 # #   receiver: user.sample.where(displaced: false)
 # # )
 # buddy.save
+
+puts "creating Denis"
+denis_url = URI.open(
+  "https://res.cloudinary.com/dbgvo56a1/image/upload/v1662648922/denis_uqc4rw.jpg"
+)
+denis = User.new(
+  name: "Denis 🇺🇦",
+  email: "test#{id}@giva.com",
+
+    # issue each user the same password
+  password: "password",
+  password_confirmation: "password",
+
+  # a user can have only one of these roles
+  displaced: true,
+
+  # random bio and problem (if displaced = true) is assigned to user
+
+  # bio: Faker::Lorem.paragraph(sentence_count: 6),
+  bio: "I'm Denis. I came to Germany 7 months ago because of the war.",
+  problem: "I need to find a school for my 6yo"
+)
+denis.photo.attach(
+  io: denis_url,
+  filename: "denis.jpg",
+  content_type: "image/jpg"
+)
+denis.save!
+
+puts "creating Elva"
+elva_url = URI.open(
+  "https://res.cloudinary.com/dbgvo56a1/image/upload/v1662648920/elva_wep7ya.jpg"
+)
+elva = User.new(
+  name: "Elva 🇮🇸",
+  email: "test#{id}@giva.com",
+
+    # issue each user the same password
+  password: "password",
+  password_confirmation: "password",
+
+  # a user can have only one of these roles
+  displaced: true,
+
+  # random bio and problem (if displaced = true) is assigned to user
+
+  # bio: Faker::Lorem.paragraph(sentence_count: 6),
+  bio: "I'm a teacher at an elemantary school and I have good connections into the school system",
+  problem: "help with school applications"
+)
+elva.photo.attach(
+  io: elva_url,
+  filename: "elva.jpg",
+  content_type: "image/jpg"
+)
+elva.save!
+
+user_tag_elva = UserTag.new(
+  user: "Elva 🇮🇸",
+  tag: "school"
+)
+user_tag_elva.save!
+
+puts "created user tag for elva"
+
+
 
 puts "seeding complete"

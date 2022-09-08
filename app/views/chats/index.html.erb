@@ -1,28 +1,25 @@
-<% @chats.each do |chat| %>
-  <div>
-    <% if chat.user_a == current_user %>
-      <% if chat.user_b.photo.attached? %>
-        <%= cl_image_tag chat.user_b.photo.key, class: "chatindex-avatar" %>
-      <% end %>
-      <h1 class="chatindex-avatar-name"><%=chat.user_b.name%><h1>
-    <% else %>
-      <% if chat.user_a.photo.attached? %>
-        <%= cl_image_tag chat.user_a.photo.key, class: "chatindex-avatar" %>
-      <% end %>
-      <h1 class="chatindex-avatar-name"><%=chat.user_a.name%><h1>
-    <% end %>
-  </div>
-  <div>
-    <% if chat.user_a == current_user %>
-      <% if chat.user_b.photo.attached? %>
-        <%= cl_image_tag chat.user_b.photo.key, class: "chatindex-avatar" %>
-      <% end %>
-      <h1 class="chatindex-avatar-name"><%=chat.user_b.name%><h1>
-    <% else %>
-      <% if chat.user_a.photo.attached? %>
-        <%= cl_image_tag chat.user_a.photo.key, class: "chatindex-avatar" %>
-      <% end %>
-      <h1 class="chatindex-avatar-name"><%=chat.user_a.name%><h1>
-    <% end %>
-  </div>
-<% end %>
+<div class="chatindex-fluid-container">
+  <% @chats.each do |chat| %>
+    <div>
+      <ul>
+      <li>
+        <% if chat.user_a == current_user %>
+          <% if chat.user_b.photo.attached? %>
+            <%= cl_image_tag chat.user_b.photo.key, class: "chatindex-avatar" %>
+          <% end %>
+          <h1 class="chatindex-avatar-name"><%=chat.user_b.name%><h1>
+                <p class="chatindex-avatar-name"><%=chat.messages.last.content unless chat.messages.empty? %><p>
+          <p><%= link_to "Send Message", chat_path(chat) %></p>
+        <% else %>
+          <% if chat.user_a.photo.attached? %>
+            <%= cl_image_tag chat.user_a.photo.key, class: "chatindex-avatar" %>
+          <% end %>
+          <h1 class="chatindex-avatar-name"><%=chat.user_a.name%><h1>
+
+
+        <% end %>
+      </div>
+        </li>
+      </ul>
+  <% end %>
+</div>

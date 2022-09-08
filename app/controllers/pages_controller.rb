@@ -5,7 +5,7 @@ class PagesController < ApplicationController
     @disable_nav = true
   end
 
-  def my_buddies
-    @my_buddies = current_user.buddies
-  end
+  # def my_buddies
+  #   @my_buddies = current_user.buddies
+  # end
 end

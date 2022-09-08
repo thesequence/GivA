@@ -1,6 +1,8 @@
 
-<div class="container">
+
+<div class="container" data-controller="readmore">
   <%= form_with url: profiles_path, method: :get, class: "d-flex search-bar justify-content-between m-3" do %>
+
     <%= text_field_tag :query,
       params[:query],
       class: "search-input w-100",

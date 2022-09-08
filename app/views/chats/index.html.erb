@@ -25,9 +25,11 @@
 
         </div>
       <% else %>
+      <div class="d-flex justify-content-start align-items-center">
         <% if chat.user_a.photo.attached? %>
           <%= cl_image_tag chat.user_a.photo.key, class: "chatindex-avatar" %>
         <% end %>
+      </div>
         <h1 class="chatindex-avatar-name"><%=chat.user_a.name%><h1>
         <p class="chatindex-avatar-name"><%=chat.messages.last.content unless chat.messages.empty? %><p>
         <p><%= link_to ">", chat_path(chat), class: "search-button" %></p>

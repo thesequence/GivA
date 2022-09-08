@@ -1,7 +1,33 @@
 .rating{
-  text-align: center;
+  text-align: center !important;
+  padding: 20px;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .radio{
   margin: 0 15px 0 0px;
+}
+
+.reviews{
+  border: 1px solid $my-mint;
+  // border-color: black;
+  border-radius: 10px;
+  // font-size: 14px;
+  padding: 0px 10px 0px 10px;
+  width: 200px;
+  gap: 5px;
+  color: $my-perry-dark;
+  // box-shadow: 1px -1px 1px 0px rgba(0, 0, 0, 0.2), -1px 1px 1px 0px rgba(0, 0, 0, 0.2);
+}
+
+.review{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 5px;
+}
+
+.review-wrapper{
+  gap: 5px;
 }

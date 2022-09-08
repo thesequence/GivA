@@ -1,31 +1,28 @@
 
 <%# <%= simple_form_for (@profile @review) %>
-<div class="container py-5">
-  <div class="row">
-    <div class="col-12 col-md-6 offset-lg-3">
-      <div class="bg-white rounded p-3 shadow">
+<div class="scene scene--card-giva mt-3">
+  <div class="card-giva">
+    <div class="card__face card__face--front">
+      <div class="wrapper-div-front">
             <div class= "rating", style="">
-        <h2>How was your experience with your buddy <%= @buddy.receiver.name || @buddy.receiver.email %>?</h2>
-        <br>
-          <%= simple_form_for [@buddy, @review] do |f| %>
-            <div class="hand"><%= f.label :rating, 'Rate your Buddy', class: 'rating' %></div>
-          <p>
-              😖 <%= f.radio_button :rating, '1', class: "radio"%>
-              <%# <br> %>
-              😕 <%= f.radio_button :rating, '2', class: "radio" %>
-              <%# <br> %>
-              🙂 <%= f.radio_button :rating, '3', class: "radio" %>
-              <%# <br> %>
-              😊 <%= f.radio_button :rating, '4', class: "radio" %>
-              <%# <br> %>
-              🥰 <%= f.radio_button :rating, '5', class: "radio" %>
-          </p>
+              <h2>How was your experience with your buddy <%= @buddy.receiver.name || @buddy.receiver.email %>?</h2>
+              <br>
+                <%= simple_form_for [@buddy, @review] do |f| %>
+                  <div class="hand"><%= f.label :rating, 'Rate your Buddy' %></div>
+                <p>
+                    😖 <%= f.radio_button :rating, 1, class: "radio"%>
+                    😕 <%= f.radio_button :rating, 2, class: "radio" %>
+                    🙂 <%= f.radio_button :rating, 3, class: "radio" %>
+                    😊 <%= f.radio_button :rating, 4, class: "radio" %>
+                    🥰 <%= f.radio_button :rating, 5, class: "radio" %>
+                </p>
 
-        <%#= simple_form_for :url => profile_reviews_path(current_user), :method => :post do |f| %>
-          <div class="hand"><%= f.input :content %></div>
-          <%= f.submit class: 'btn btn-primary' %>
-        <% end %>
+              <%#= simple_form_for :url => profile_reviews_path(current_user), :method => :post do |f| %>
+                <div class="hand"><%= f.input :content, placeholder: "Comment on how you found your buddy..." %></div>
+                <%= f.submit 'Post feedback', class: 'submit-button'%>
+              <% end %>
             </div>
+        </div>
       </div>
     </div>
   </div>

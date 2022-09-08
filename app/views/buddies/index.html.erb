@@ -76,19 +76,23 @@
 
               <div class="content-wrapper-back">
 
-                <div class="bio-wrapper">
+                <div class="hand-wrapper">
                   <div class="my-bio">About me</div>
                   <div class="bio">
                     <%= profile.bio %>
                   </div>
                 </div>
 
-                <div class="review-wrapper">
-                  <div class="my-review">Review</div>
-                  <div class="review">
-                     <% profile.reviews.each do |review| %>
-                      <%= review.content %>
-                    <% end %>
+                <div class="hand-wrapper">
+                  <div class="hand">Feedback of <%=profile.name%></div>
+                    <div class="review">
+                        <% profile.reviews.each do |review| %>
+                          <div class="reviews">
+                          <%= ["😖","😕","🙂","😊","🥰"][(review.rating - 1)] if review.rating %> <%= review.content %>
+                          <%=%>
+                          </div>
+                        <% end %>
+
 
                   </div>
                 </div>

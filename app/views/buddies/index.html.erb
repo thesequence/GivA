@@ -112,7 +112,7 @@
 
                   <% buddies = Buddy.where(asker_id: current_user.id, receiver_id: profile.id) || Buddy.where(asker_id: profile.id, receiver_id: current_user.id) %>
 
-                    <%= link_to "Review", new_buddy_review_path(buddies.first.id), class:"buddy-button" %>
+                    <%= link_to "Review", new_buddy_review_path(buddies.first.id), class:"buddy-button" unless buddies.first.nil? %>
 
 
                 </div>

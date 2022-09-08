@@ -22,7 +22,7 @@
     <% else %>
       <%= render "shared/navbar" unless @disable_nav %>
     <% end %>
-    <div class="overflow-scroll bgrcolor" style="height: 90vh;">
+    <div class="overflow-scroll bgrcolor" style="height: <%= params[:action] == 'home' ? '100vh' : '90vh' %>;">
       <%= yield %>
     </div>
     <%= render "shared/flashes" %>

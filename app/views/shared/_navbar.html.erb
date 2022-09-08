@@ -1,7 +1,6 @@
 <div class="navbar navbar-lewagon">
   <div class="container-fluid">
     <div><h1 class="nav-logo">GivA</h1></div>
-     <%= button_to '<i class="fa-solid fa-user"></i>'.html_safe, destroy_user_session_path,
-        method: :delete,  class_active: 'back-active'%>
+     <%= active_link_to '<i class="fa-solid fa-user"></i>'.html_safe, destroy_user_session_path, data: { turbo_method: :delete },  class_active: 'back-active'%>
   </div>
 </div>

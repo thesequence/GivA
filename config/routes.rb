@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'tags/title'
+  # get 'tags/title'
   devise_for :users
   root to: "pages#home"
   get "my_buddies", to: "pages#my_buddies"

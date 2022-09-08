@@ -1,6 +1,8 @@
 
-<div class="container">
-  <%= form_with url: profiles_path, method: :get, class: "d-flex py-4" do %>
+
+<div class="container bgrcolor" data-controller="readmore">
+  <%= form_with url: profiles_path, method: :get, class: "d-flex search-bar justify-content-between m-3" do %>
+
     <%= text_field_tag :query,
       params[:query],
       class: "search-input w-100",
@@ -93,7 +95,12 @@
                   <% else %>
                     <%= link_to "Chat", chats_path(profile_id: profile.id), data: {turbo_method: :post}, class:"chat-button" %>
                   <% end %>
-                  <%= link_to "Buddy Up", profile_buddies_path(profile_id: profile.id), data: {turbo_method: :post}, class:"buddy-button" %>
+                  <% buddies = Buddy.where(asker_id: current_user.id, receiver_id: profile.id) || Buddy.where(asker_id: profile.id, receiver_id: current_user.id) %>
+                  <% if buddies.empty? %>
+                    <%= link_to "Buddy Up", profile_buddies_path(profile_id: profile.id), data: {turbo_method: :post}, class:"buddy-button" %>
+                  <% else %>
+                    <%= link_to "Review", new_buddy_review_path(buddies.first.id), class:"buddy-button" %>
+                  <% end %>
                 </div>
 
               </div>

@@ -474,7 +474,7 @@ elva = User.new(
   password_confirmation: "password",
 
   # a user can have only one of these roles
-  displaced: true,
+  displaced: false,
 
   # random bio and problem (if displaced = true) is assigned to user
 

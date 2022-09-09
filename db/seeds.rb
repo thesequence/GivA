@@ -11,12 +11,15 @@ require "faker"
 
 puts "deleting database"
 
-UserTag.delete_all
-Tag.delete_all
-User.delete_all
-Buddy.delete_all
+UserTag.destroy_all
+Review.destroy_all
+Buddy.destroy_all
+Tag.destroy_all
+Message.destroy_all
+Chat.destroy_all
+User.destroy_all
 
-Location.delete_all
+Location.destroy_all
 
 puts "seeding database"
 
@@ -436,7 +439,7 @@ denis_url = URI.open(
 )
 denis = User.new(
   name: "Denis 🇺🇦",
-  email: "test#{id}@giva.com",
+  email: "denis@giva.com",
 
     # issue each user the same password
   password: "password",
@@ -464,7 +467,7 @@ elva_url = URI.open(
 )
 elva = User.new(
   name: "Elva 🇮🇸",
-  email: "test#{id}@giva.com",
+  email: "elva@giva.com",
 
     # issue each user the same password
   password: "password",
@@ -487,10 +490,16 @@ elva.photo.attach(
 elva.save!
 
 user_tag_elva = UserTag.new(
-  user: "Elva 🇮🇸",
-  tag: "school"
+  user_id: elva.id,
+  tag_id: tag7.id
 )
 user_tag_elva.save!
+
+ut_2 = UserTag.new(
+  user_id: elva.id,
+  tag_id: tag6.id
+)
+ut_2.save!
 
 puts "created user tag for elva"
 
